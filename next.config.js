@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require('glob')
+const isProduction = (process.env.NODE_ENV || 'production') === 'production'
 
 module.exports = {
   webpack: (config, { dev }) => {
@@ -29,6 +30,11 @@ module.exports = {
           }
         ]
       }
+    ),
+    config.plugins.push(
+      new webpack.DefinePlugin({
+        'process.env.ASSET_PREFIX': JSON.stringify(assetPrefix),
+      }),
     )
     return config
   },
@@ -36,5 +42,6 @@ module.exports = {
     return {
       '/': { page: '/' }
     }
-  }
+  },
+  assetPrefix: isProduction ? '/product-page' : '/',
 }
