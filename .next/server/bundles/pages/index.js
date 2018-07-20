@@ -100,19 +100,24 @@ var Footer = function Footer(props) {
       fileName: _jsxFileName,
       lineNumber: 5
     }
-  }, "\xA9 Next.js Starter - Dimension. Design: ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-    href: "https://html5up.net",
+  }, "\xA92018 Mulch Mate \u2014 ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+    href: "http://www.paulsonindustries.net/",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
     }
-  }, "HTML5 UP"), ". Built with: ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
-    href: "https://github.com/zeit/next.js",
+  }, "Paulson Industries, LLC"), __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("br", {
     __source: {
       fileName: _jsxFileName,
       lineNumber: 5
     }
-  }, "Next.js")));
+  }), "Design: ", __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement("a", {
+    href: "https://github.com/celloworld",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 5
+    }
+  }, "Cameron Donahue")));
 };
 
 Footer.propTypes = {
