@@ -1,7 +1,7 @@
 const path = require('path')
 const glob = require('glob')
 const isProduction = (process.env.NODE_ENV || 'production') === 'production';
-var webpack = require('webpack');
+const webpack = require('webpack');
 var assetPrefix = isProduction ? '/product-page' : '/';
 
 module.exports = {
