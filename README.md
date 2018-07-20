@@ -1,5 +1,6 @@
 # nextjs-starter-dimension
-A Next.js starter based on the Dimension site template, designed by [HTML5 UP](https://html5up.net/dimension). Check out https://codebushi.com/nextjs-website-starters/ for more Next.js starters and templates.
+A Next.js React SPA for marketing a single product
+--Based on the Dimension site template designed by [HTML5 UP](https://html5up.net/dimension).
 
 ## Preview
 
@@ -11,10 +12,10 @@ To get started, simply clone the repository and run `npm install`
 
 ```
 # Clone the repo
-git clone https://github.com/codebushi/nextjs-starter-dimension.git
+git clone https://github.com/celloworld/product-page.git
 
 # Move into the new directory
-cd nextjs-starter-dimension/
+cd product-page/
 
 # Install npm packages
 npm install
