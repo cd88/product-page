@@ -1,10 +1,10 @@
 # nextjs-starter-dimension
 A Next.js React SPA for marketing a single product
---Based on the Dimension site template designed by [HTML5 UP](https://html5up.net/dimension).
+*Based on the Dimension site template designed by [HTML5 UP](https://html5up.net/dimension).*
 
 ## Preview
 
-http://nextjs-dimension.surge.sh/
+https://celloworld.github.io/product-page/
 
 ## Getting Started
 
