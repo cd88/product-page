@@ -10,90 +10,11 @@ class Main extends React.Component {
   render() {
 
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
+    
+    .image:before { background-image: url(${process.env.BACKEND_URL} + '/static/images/overlay.png'); }
 
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
-      <style jsx>{`
-        .image {
-      		border-radius: _size(border-radius);
-      		border: 0;
-      		display: inline-block;
-      		position: relative;
-
-      		&:before {
-      			@include vendor('pointer-events', 'none');
-      			background-image: url('/static/images/overlay.png');
-      			background-color: _palette(bg-overlay);
-      			border-radius: _size(border-radius);
-      			content: '';
-      			display: block;
-      			height: 100%;
-      			left: 0;
-      			opacity: 0.5;
-      			position: absolute;
-      			top: 0;
-      			width: 100%;
-      		}
-
-      		img {
-      			border-radius: _size(border-radius);
-      			display: block;
-      		}
-
-      		&.left,
-      		&.right {
-      			max-width: 40%;
-
-      			img {
-      				width: 100%;
-      			}
-      		}
-
-      		&.left {
-      			float: left;
-      			padding: 0 1.5em 1em 0;
-      			top: 0.25em;
-      		}
-
-      		&.right {
-      			float: right;
-      			padding: 0 0 1em 1.5em;
-      			top: 0.25em;
-      		}
-
-      		&.fit {
-      			display: block;
-      			margin: 0 0 _size(element-margin) 0;
-      			width: 100%;
-
-      			img {
-      				width: 100%;
-      			}
-      		}
-
-      		&.main {
-      			display: block;
-      			margin: (_size(element-margin) * 1.25) 0;
-      			width: 100%;
-
-      			img {
-      				width: 100%;
-      			}
-      		}
-
-      		@include breakpoint(small) {
-      			&.main {
-      				margin: (_size(element-margin) * 1) 0;
-      			}
-      		}
-
-      		@include breakpoint(xsmall) {
-      			&.main {
-      				margin: (_size(element-margin) * 0.75) 0;
-      			}
-      		}
-      	}
-      `}</style>
         <article id="intro" className={`${this.props.article === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Intro</h2>
           <span className="image main"><img src=${process.env.BACKEND_URL} + "/static/images/pic01.jpg" alt="" /></span>
