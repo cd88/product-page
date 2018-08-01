@@ -1,11 +1,9 @@
 const path = require('path')
 const glob = require('glob')
-const isProduction = process.env.NODE_ENV === 'production';
 const webpack = require('webpack');
-var assetPrefix = isProduction ? '/product-page' : '/';
 
 module.exports = {
-  assetPrefix: assetPrefix,
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/product-page' : '/',
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
