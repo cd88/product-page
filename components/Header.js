@@ -11,7 +11,7 @@ const Header = (props) => (
         <div className="content">
             <div className="inner">
                 <h1>Mulch Mate</h1>
-                <p>A reusable garden tool that removes the<br/>frustration of bagging yard waste</p>
+                <p>A reusable garden tool that makes it<br/>simple to bag yard waste</p>
             </div>
         </div>
         <nav>
