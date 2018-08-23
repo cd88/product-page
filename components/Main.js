@@ -15,6 +15,7 @@ class Main extends React.Component {
 
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
+      // {JSON.stringify(process.env)}
         <article id="intro" className={`${this.props.article === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Intro</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic01.jpg"} alt="" /></span>

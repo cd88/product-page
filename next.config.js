@@ -1,9 +1,11 @@
 const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack');
+const prefix = process.env.NODE_ENV === 'production' ? '/product-page' : '/';
+const prod = process.env.NODE_ENV === 'production';
 
 module.exports = {
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/product-page' : '/',
+  assetPrefix: prefix,
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
@@ -34,7 +36,12 @@ module.exports = {
     ),
     config.plugins.push(
       new webpack.DefinePlugin({
-        'process.env.ASSET_PREFIX': JSON.stringify(assetPrefix),
+        process: {
+          env: {
+            BACKEND_URL: JSON.stringify(prod ? 'https://celloworld.github.io/product-page' : ''),
+          },
+        },
+        // 'process.env.ASSET_PREFIX': JSON.stringify(prefix),
       }),
     )
     return config
