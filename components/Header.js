@@ -2,16 +2,17 @@ import PropTypes from 'prop-types';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faGem from '@fortawesome/fontawesome-free-regular/faGem'
 
+import SpinningRectangles from './SpinningRectangles'
+
 const Header = (props) => (
     <header id="header" style={props.timeout ? {display: 'none'} : {}}>
         <div className="logo">
-            {/*<span className="icon fa-diamond"></span>*/}
-            <FontAwesomeIcon icon={faGem} transform="grow-18" />
+          <SpinningRectangles />
         </div>
         <div className="content">
             <div className="inner">
-                <h1>Mulch Mate</h1>
-                <p>A reusable garden tool that makes it<br/>simple to bag yard waste</p>
+                <h1>The Mulchmate</h1>
+                <p>A reusable garden tool that keeps yard waste bags <br />open while they're being filled</p>
             </div>
         </div>
         <nav>
