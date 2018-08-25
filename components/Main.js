@@ -12,19 +12,29 @@ class Main extends React.Component {
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
 
     // .image:before { background-image: url({process.env.BACKEND_URL + '/static/images/overlay.png'}); }
+    // {JSON.stringify(process.env)}
 
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
-      // {JSON.stringify(process.env)}
-        <article id="intro" className={`${this.props.article === 'intro' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Intro</h2>
-          <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic01.jpg"} alt="" /></span>
-          <p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+        <article id="demo" className={`${this.props.article === 'demo' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+          <div className="demoSlideButtonFlexbox">
+            <button className="demoSlideButton">1</button>
+            <button className="demoSlideButton">2</button>
+            <button className="demoSlideButton">3</button>
+          </div>
+          <div id="step1" className="demoSlide">
+            <p>Insert the Mulchmate diagonally downward into a Lawn Bag</p>
+          </div>
+          <div id="step2" className="demoSlide">
+            <p>Lift &amp; guide the Mulchmate corners until snug against the bag corners</p>
+          </div>
+          <div id="step3" className="demoSlide">
+            <p><strong>Ready to use!</strong> The bag will stand &amp; remain open while you fill it</p>
+          </div>
           {close}
         </article>
 
-        <article id="work" className={`${this.props.article === 'work' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        <article id="purchase" className={`${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Work</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic02.jpg"} alt="" /></span>
           <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
