@@ -1,0 +1,66 @@
+///
+/// Dimension by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
+
+/* demo slides, steps, instructions */
+	.demoSlideButtonFlexbox {
+		display: flex;
+		justify-content: space-between;
+		width:400px;
+		padding: 0 15px;
+		margin:auto;
+	}
+
+	.demoSlideButton {
+		display: flex;
+		justify-content: space-between;
+		width:63px;
+		height:63px;
+		border-radius: 32px;
+		font-size: 38px;
+		font-family: "Source Sans Pro",sans-serif;
+		margin-bottom: 30px;
+    padding-bottom: 3px;
+
+		&:after {
+			content: '';
+	    display: block;
+	    position: relative;
+	    top: 50px;
+	    left: 9px;
+	    width: 1px;
+	    height: 32px;
+	    background: #fff;
+		}
+	}
+
+	.demoSlide {
+		border-radius: 3px;
+		border: white solid 1px;
+		height:256px;
+		width:400px;
+		margin: auto;
+		padding: 20px 15px;
+		display: block;
+		position: relative;
+
+			p {
+				margin: 0;
+			}
+		}
+/*
+		@include breakpoint(small) {
+			&.main {
+				margin: (_size(element-margin) * 1) 0;
+			}
+		}
+
+		@include breakpoint(xsmall) {
+			&.main {
+				margin: (_size(element-margin) * 0.75) 0;
+			}
+		}
+	}
+*/
