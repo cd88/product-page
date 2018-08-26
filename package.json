@@ -20,6 +20,7 @@
     "autoprefixer": "7.1.5",
     "babel-plugin-module-resolver": "^2.7.1",
     "babel-plugin-wrap-in-js": "^1.1.0",
+    "classnames": "^2.2.6",
     "glob": "^7.1.2",
     "next": "latest",
     "node-sass": "^4.4.0",
