@@ -3,8 +3,9 @@ import {render} from 'react-dom'
 import cx from 'classnames'
 import data from '../static/demo-slide-data'
 import NonPassiveTouchTarget from 'react-touch-carousel'
-import TouchCarousel, {clamp} from 'react-touch-carousel'
 import touchWithMouseHOC from 'react-touch-carousel'
+import TouchCarousel, {clamp} from 'react-touch-carousel'
+
 import '../styles/components/_carousel.scss'
 
 const query = ""
@@ -62,18 +63,17 @@ const Container = touchWithMouseHOC(CarouselContainer)
 class Carousel extends React.Component {
   renderCard (index, modIndex) {
     const item = data[modIndex]
+    const imgURL = "/static/images/mulchmate-demo-slide-" + (modIndex + 1)
     return (
       <div
         key={index}
         className='carousel-card'
         onClick={() => log(`clicked card ${1 + modIndex}`)}
       >
-        <div
-          className='carousel-card-inner'
-          style={{backgroundColor: item.background}}
-        >
+        <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
+          <img src={{imgURL}}/>
         </div>
       </div>
     )
@@ -97,21 +97,21 @@ class Carousel extends React.Component {
     )
   }
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-  const ndRoot = document.getElementById('react-root')
-  render(<App />, ndRoot)
-
-  let optionExplain = []
-  if (enableLoop) {
-    optionExplain.push('loop')
-  }
-  if (enableAutoplay) {
-    optionExplain.push('autoplay=2000')
-  }
-  if (optionExplain.length) {
-    document.getElementById('option-explain').textContent = optionExplain.join(' ')
-  }
-})
+//
+// document.addEventListener('DOMContentLoaded', function () {
+//   const ndRoot = document.getElementById('react-root')
+//   render(<App />, ndRoot)
+//
+//   let optionExplain = []
+//   if (enableLoop) {
+//     optionExplain.push('loop')
+//   }
+//   if (enableAutoplay) {
+//     optionExplain.push('autoplay=2000')
+//   }
+//   if (optionExplain.length) {
+//     document.getElementById('option-explain').textContent = optionExplain.join(' ')
+//   }
+// })
 
 export default Carousel
