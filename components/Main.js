@@ -4,6 +4,8 @@ import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
+import Carousel from './Carousel'
+
 
 class Main extends React.Component {
 
@@ -17,6 +19,7 @@ class Main extends React.Component {
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="demo" className={`${this.props.article === 'demo' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
+        <Carousel />
           <div className="demoSlideButtonFlexbox">
             <button className="demoSlideButton">1</button>
             <button className="demoSlideButton">2</button>
