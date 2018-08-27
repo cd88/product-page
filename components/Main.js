@@ -20,6 +20,7 @@ class Main extends React.Component {
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="demo" className={`${this.props.article === 'demo' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
         <Carousel />
+        <pre className="ui-center"><code id="console" ></code></pre>
           <div className="demoSlideButtonFlexbox">
             <button className="demoSlideButton">1</button>
             <button className="demoSlideButton">2</button>

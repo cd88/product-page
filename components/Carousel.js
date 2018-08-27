@@ -2,25 +2,30 @@ import React, {Component} from 'react'
 import {render} from 'react-dom'
 import cx from 'classnames'
 import data from '../static/demo-slide-data'
-import NonPassiveTouchTarget from 'react-touch-carousel'
-import touchWithMouseHOC from 'react-touch-carousel'
+import NonPassiveTouchTarget from './NonPassiveTouchTarget'
+import touchWithMouseHOC from 'react-touch-carousel/lib/touchWithMouseHOC'
 import TouchCarousel, {clamp} from 'react-touch-carousel'
-
+import '../styles/components/_carousel.scss'
+// export {
+//   clamp: somethingTheyalreadyCreated
+// }
+// export default TouchCarousel
+// export touchWithMouseHOC
 import '../styles/components/_carousel.scss'
 
 const query = ""
 const enableLoop = 0
 const enableAutoplay = 0
 
-const cardSize = 300
+const cardSize = 400
 const cardPadCount = enableLoop ? 3 : 0
-// const carouselWidth = clamp(window.innerWidth, 0, 960)
 
 function log (text) {
   document.getElementById('console').innerText = text
 }
 
 function CarouselContainer (props) {
+  const carouselWidth = process.browser ? clamp(window.innerWidth, 0, 960) : 960;
   const {cursor, carouselState: {active, dragging}, ...rest} = props
   let current = -Math.round(cursor) % data.length
   while (current < 0) {
@@ -63,7 +68,7 @@ const Container = touchWithMouseHOC(CarouselContainer)
 class Carousel extends React.Component {
   renderCard (index, modIndex) {
     const item = data[modIndex]
-    const imgURL = "/static/images/mulchmate-demo-slide-" + (modIndex + 1)
+    const imgURL = `/static/images/mulchmate-demo-slide-${1 + modIndex}.png`
     return (
       <div
         key={index}
@@ -73,7 +78,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img src={{imgURL}}/>
+
         </div>
       </div>
     )
@@ -97,21 +102,5 @@ class Carousel extends React.Component {
     )
   }
 }
-//
-// document.addEventListener('DOMContentLoaded', function () {
-//   const ndRoot = document.getElementById('react-root')
-//   render(<App />, ndRoot)
-//
-//   let optionExplain = []
-//   if (enableLoop) {
-//     optionExplain.push('loop')
-//   }
-//   if (enableAutoplay) {
-//     optionExplain.push('autoplay=2000')
-//   }
-//   if (optionExplain.length) {
-//     document.getElementById('option-explain').textContent = optionExplain.join(' ')
-//   }
-// })
 
 export default Carousel
