@@ -11,7 +11,7 @@ const data = [
   },
   {
     title: 'Step 3',
-    text: "<strong>Ready to use!</strong> The bag will stand &amp; remain open while you fill it",
+    text: "Ready to use! The bag will stand & remain open while you fill it",
     image: "static/images/mulchmate-demo-slide-3"
   }
 ]
