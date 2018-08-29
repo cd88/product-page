@@ -11,7 +11,6 @@ import '../styles/components/_carousel.scss'
 // }
 // export default TouchCarousel
 // export touchWithMouseHOC
-import '../styles/components/_carousel.scss'
 
 const query = ""
 const enableLoop = 0
@@ -25,7 +24,7 @@ function log (text) {
 }
 
 function CarouselContainer (props) {
-  const carouselWidth = process.browser ? clamp(window.innerWidth, 0, 960) : 960;
+  const carouselWidth = process.browser ? clamp(window.innerWidth, 0, 960) : 400;
   const {cursor, carouselState: {active, dragging}, ...rest} = props
   let current = -Math.round(cursor) % data.length
   while (current < 0) {
@@ -78,7 +77,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-
+          <img src={imgURL}/>
         </div>
       </div>
     )
