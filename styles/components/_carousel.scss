@@ -10,7 +10,8 @@ h1 {
 
 .carousel-container {
   position: relative;
-  height: 300px;
+  height: 400px;
+  width:400px;
   max-width: 960px;
   margin: 0 auto;
   overflow: hidden;
@@ -23,7 +24,7 @@ h1 {
 }
 
 .carousel-card {
-  flex: 0 0 300px;
+  flex: 0 0 400px;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -36,13 +37,13 @@ h1 {
 
 .carousel-card-inner {
   flex-direction: column;
-  width: 290px;
-  height: 290px;
+  width: 390px;
+  height: 390px;
   border-radius: 5px;
 }
 
 .carousel-title {
-  margin-top: 20px;
+  margin-top: 10px;
   font-size: 1.5em;
 }
 
@@ -50,7 +51,6 @@ h1 {
   padding: 1em;
   font-size: 14px;
   white-space: pre-wrap;
-  text-align: left;
   font-family: sans-serif;
 }
 
