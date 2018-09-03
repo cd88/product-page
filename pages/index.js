@@ -29,7 +29,7 @@ class IndexPage extends React.Component {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId)
         }
-    }
+    };
 
     handleOpenArticle(article) {
         this.setState({
