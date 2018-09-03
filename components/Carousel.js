@@ -1,16 +1,32 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
 import cx from 'classnames'
-import data from '../static/demo-slide-data'
 import NonPassiveTouchTarget from './NonPassiveTouchTarget'
 import touchWithMouseHOC from 'react-touch-carousel/lib/touchWithMouseHOC'
 import TouchCarousel, {clamp} from 'react-touch-carousel'
-import '../styles/components/_carousel.scss'
 // export {
 //   clamp: somethingTheyalreadyCreated
 // }
 // export default TouchCarousel
 // export touchWithMouseHOC
+
+const carouselSlideData = [
+  {
+    title: 'Step 1',
+    text: "Insert the Mulchmate diagonally downward into a Lawn Bag",
+    image: "static/images/mulchmate-demo-slide-1"
+  },
+  {
+    title: 'Step 2',
+    text: "Lift and guide the Mulchmate corners until snug against the bag corners",
+    image: "static/images/mulchmate-demo-slide-2"
+  },
+  {
+    title: 'Step 3',
+    text: "Ready to use! The bag will stand & remain open while you fill it",
+    image: "static/images/mulchmate-demo-slide-3"
+  }
+]
 
 const query = ""
 const enableLoop = 0
@@ -26,13 +42,14 @@ function log (text) {
 function CarouselContainer (props) {
   const carouselWidth = process.browser ? clamp(window.innerWidth, 0, 960) : 400;
   const {cursor, carouselState: {active, dragging}, ...rest} = props
-  let current = -Math.round(cursor) % data.length
+  let current = -Math.round(cursor) % carouselSlideData.length
   while (current < 0) {
-    current += data.length
+    current += carouselSlideData.length
   }
   // Put current card at center
   const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
   return (
+
     <NonPassiveTouchTarget
       className={cx(
         'carousel-container',
@@ -49,14 +66,17 @@ function CarouselContainer (props) {
       />
 
       <div className='carousel-pagination-wrapper'>
-        <ol className='carousel-pagination'>
-          {data.map((_, index) => (
-            <li
+        <div className="carousel-pagination">
+          {carouselSlideData.map((_, index) => (
+            <button
               key={index}
               className={current === index ? 'current' : ''}
-            />
+
+            >
+            {index + 1}
+            </button>
           ))}
-        </ol>
+        </div>
       </div>
     </NonPassiveTouchTarget>
   )
@@ -66,7 +86,7 @@ const Container = touchWithMouseHOC(CarouselContainer)
 
 class Carousel extends React.Component {
   renderCard (index, modIndex) {
-    const item = data[modIndex]
+    const item = carouselSlideData[modIndex]
     const imgURL = `/static/images/mulchmate-demo-slide-${1 + modIndex}.png`
     return (
       <div
@@ -88,7 +108,7 @@ class Carousel extends React.Component {
       <TouchCarousel
         component={Container}
         cardSize={cardSize}
-        cardCount={data.length}
+        cardCount={carouselSlideData.length}
         cardPadCount={cardPadCount}
         loop={enableLoop}
         autoplay={enableAutoplay ? 2e3 : false}

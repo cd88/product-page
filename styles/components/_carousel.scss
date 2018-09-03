@@ -2,12 +2,6 @@
   text-align: center;
 }
 
-h1 {
-  margin: 1.5em;
-  font-size: 24px;
-  text-align: center;
-}
-
 .carousel-container {
   position: relative;
   height: 400px;
@@ -55,31 +49,32 @@ h1 {
 }
 
 .carousel-pagination-wrapper {
-  position: absolute;
   left: 0;
   right: 0;
-  bottom: 20px;
   display: flex;
   justify-content: center;
   pointer-events: none;
 }
 
 .carousel-pagination {
-  list-style: none;
+  top: -20px;
+  position: absolute;
   display: flex;
-  justify-content: space-around;
-  width: 180px;
+  justify-content: space-between;
+  width: 400px;
   padding: 0;
 }
 
-.carousel-pagination li {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(50, 50, 50, 0.5);
+.carousel-pagination * {
+  width:63px;
+  height:63px;
+  border-radius: 32px;
+  font-size: 38px;
+  font-family: "Source Sans Pro",sans-serif;
 }
 
 .carousel-pagination .current {
   border-radius: 0;
-  background: white;
+  background-color: rgba(255,255,255,.6);
+  color: black
 }

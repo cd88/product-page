@@ -21,20 +21,6 @@ class Main extends React.Component {
         <article id="demo" className={`${this.props.article === 'demo' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
         <Carousel />
         <pre className="ui-center"><code id="console" ></code></pre>
-          <div className="demoSlideButtonFlexbox">
-            <button className="demoSlideButton">1</button>
-            <button className="demoSlideButton">2</button>
-            <button className="demoSlideButton">3</button>
-          </div>
-          <div id="step1" className="demoSlide">
-            <p>Insert the Mulchmate diagonally downward into a Lawn Bag</p>
-          </div>
-          <div id="step2" className="demoSlide">
-            <p>Lift &amp; guide the Mulchmate corners until snug against the bag corners</p>
-          </div>
-          <div id="step3" className="demoSlide">
-            <p><strong>Ready to use!</strong> The bag will stand &amp; remain open while you fill it</p>
-          </div>
           {close}
         </article>
 
