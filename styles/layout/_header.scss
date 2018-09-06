@@ -76,7 +76,7 @@
 				overflow: hidden;
 
 				&.collapse {
-					@include vendor('transition-delay', '0');
+					@include vendor('transition-delay', '0s');
 					padding:0;
 					max-height:0;
 				}
