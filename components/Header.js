@@ -5,17 +5,19 @@ import faGem from '@fortawesome/fontawesome-free-regular/faGem'
 import SpinningRectangles from './SpinningRectangles'
 import Carousel from './Carousel'
 
+
 const Header = (props) => (
+
     <header id="header" style={props.timeout ? {display: 'none'} : {}}>
         <div className="logo">
           <SpinningRectangles />
         </div>
         <div className="content">
-            <div className={props.isDemoVisible ? 'collapse inner' : 'inner'}>
+            <div className={`${props.isDemoVisible ? 'collapsed' : ''} ${props.paintingIntro} inner`}>
                 <h1>The Mulchmate</h1>
                 <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
             </div>
-            <div className={props.isDemoVisible ? 'demo' : 'collapse demo'}>
+            <div className={props.isDemoVisible ? 'demo' : 'collapsed demo'}>
               <Carousel />
                 {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
             </div>
@@ -35,7 +37,8 @@ Header.propTypes = {
     onOpenArticle: PropTypes.func,
     updateDemoState: PropTypes.func,
     timeout: PropTypes.bool,
-    isDemoVisible: PropTypes.bool
+    isDemoVisible: PropTypes.bool,
+    paintingIntro: PropTypes.string
 }
 
 export default Header
