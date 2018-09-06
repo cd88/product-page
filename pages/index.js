@@ -5,16 +5,19 @@ import Header from "../components/Header"
 import Main from "../components/Main"
 import Footer from "../components/Footer"
 
+
 class IndexPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            isDemoVisible: false,
             isArticleVisible: false,
             timeout: false,
             articleTimeout: false,
             article: "",
             loading: "is-loading"
         }
+        this.updateDemoState = this.updateDemoState.bind(this)
         this.handleOpenArticle = this.handleOpenArticle.bind(this)
         this.handleCloseArticle = this.handleCloseArticle.bind(this)
     }
@@ -29,7 +32,11 @@ class IndexPage extends React.Component {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId)
         }
-    };
+    }
+
+    updateDemoState(visibilityBoolean) {
+        this.setState({isDemoVisible: visibilityBoolean})
+    }
 
     handleOpenArticle(article) {
         this.setState({
@@ -80,7 +87,12 @@ class IndexPage extends React.Component {
                     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
                     <div id="wrapper">
-                        <Header onOpenArticle={this.handleOpenArticle} timeout={this.state.timeout} />
+                        <Header
+                            onOpenArticle={this.handleOpenArticle}
+                            timeout={this.state.timeout}
+                            isDemoVisible={this.state.isDemoVisible}
+                            updateDemoState={this.updateDemoState}
+                        />
                         <Main
                             isArticleVisible={this.state.isArticleVisible}
                             timeout={this.state.timeout}

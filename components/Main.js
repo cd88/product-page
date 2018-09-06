@@ -4,7 +4,7 @@ import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
-import Carousel from './Carousel'
+
 
 
 class Main extends React.Component {
@@ -18,12 +18,6 @@ class Main extends React.Component {
 
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
-        <article id="demo" className={`${this.props.article === 'demo' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-        <Carousel />
-        <pre className="ui-center"><code id="console" ></code></pre>
-          {close}
-        </article>
-
         <article id="purchase" className={`${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Work</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic02.jpg"} alt="" /></span>
