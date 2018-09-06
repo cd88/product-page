@@ -75,8 +75,32 @@
 				max-height: 40rem;
 				overflow: hidden;
 
+				&.collapse {
+					@include vendor('transition-delay', '0');
+					padding:0;
+					max-height:0;
+				}
+
 				> :last-child {
 					margin-bottom: 0;
+				}
+			}
+
+			.demo {
+				@include vendor('transition', (
+					'max-height #{_duration(intro)} ease',
+					'padding #{_duration(intro)} ease',
+					'opacity #{_duration(article)} ease-in-out'
+				));
+				@include vendor('transition-delay', '1s');
+				padding: 0 2rem;
+				max-height: 40rem;
+				overflow: hidden;
+
+				&.collapse {
+					@include vendor('transition-delay', '0s');
+					padding:0;
+					max-height:0;
 				}
 			}
 
