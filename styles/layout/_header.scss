@@ -66,18 +66,33 @@
 
 			.inner {
 				@include vendor('transition', (
-					'max-height #{_duration(intro)} ease',
-					'padding #{_duration(intro)} ease',
-					'opacity #{_duration(article)} ease-in-out'
+					'max-height #{_duration(demo)} ease 0.55s',
+					'padding #{_duration(demoPadding)} ease 0.692857s',
+					'opacity #{_duration(demo)} ease 0.55s'
 				));
-				@include vendor('transition-delay', '0.25s');
+
 				padding: 3rem 2rem;
-				max-height: 40rem;
+				max-height: 15rem;
+				width: 600px;
 				overflow: hidden;
 
-				&.collapse {
+				&.is-painting{
+					@include vendor('transition', (
+					'max-height #{_duration(intro)} ease',
+					'padding #{_duration(intro)} ease',
+					'opacity #{_duration(article)} ease'
+					));
+					@include vendor('transition-delay', '0.25s');
+				}
+
+				&.collapsed {
+					@include vendor('transition', (
+						'max-height #{_duration(fasterDemo)} ease',
+						'padding #{_duration(fasterDemoPadding)} ease',
+						'opacity #{_duration(fasterDemo)} ease'
+					));
 					@include vendor('transition-delay', '0s');
-					padding:0;
+					padding:0 2rem;
 					max-height:0;
 				}
 
@@ -88,16 +103,16 @@
 
 			.demo {
 				@include vendor('transition', (
-					'max-height #{_duration(intro)} ease',
-					'padding #{_duration(intro)} ease',
-					'opacity #{_duration(article)} ease-in-out'
+					'max-height #{_duration(demo)} ease',
+					'padding #{_duration(demo)} ease',
+					'opacity #{_duration(demo)} ease'
 				));
-				@include vendor('transition-delay', '1s');
+				@include vendor('transition-delay', '.35s');
 				padding: 0 2rem;
 				max-height: 40rem;
 				overflow: hidden;
 
-				&.collapse {
+				&.collapsed {
 					@include vendor('transition-delay', '0s');
 					padding:0;
 					max-height:0;
