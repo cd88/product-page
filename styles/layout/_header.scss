@@ -43,6 +43,48 @@
 			}
 		}
 
+		.cornerLogo {
+			@include vendor('transition', (
+			'top #{_duration(article)} ease-in-out #{_duration(demo)}',
+			));
+			position: fixed;
+			top: -60px;
+			left:0;
+			margin:0;
+
+			&:before {
+				display:none;
+			}
+			&.is-painting {
+				display:none;
+			}
+
+			&.demoVisible {
+				@include vendor('transition', (
+				'top #{_duration(article)} ease-in-out #{_duration(intro)}',
+				));
+				top:0;
+				display: block;
+			}
+
+			.circle {
+				@include vendor('transform', (
+					'scale(.5)'
+					'translateY(-24px)'
+				));
+				border: 2px solid white;
+				border-radius: 44px;
+				width: 88px;
+				height: 88px;
+				position: absolute;
+			}
+		 	.title {
+				font-size: 1.4rem;
+				margin: 16px 0 0 78px;
+				letter-spacing: .05rem + _font(letter-spacing);
+			}
+		}
+
 		.logo {
 			width: 5.5rem;
 			height: 5.5rem;
@@ -66,9 +108,9 @@
 
 			.inner {
 				@include vendor('transition', (
-					'max-height #{_duration(demo)} ease 0.55s',
-					'padding #{_duration(demoPadding)} ease 0.692857s',
-					'opacity #{_duration(demo)} ease 0.55s'
+					'max-height #{_duration(demo)} ease 0.45s',
+					'padding #{_duration(demoPadding)} ease 0.6s',
+					'opacity #{_duration(demo)} ease 0.45s'
 				));
 
 				padding: 3rem 2rem;
@@ -103,17 +145,24 @@
 
 			.demo {
 				@include vendor('transition', (
-					'max-height #{_duration(demo)} ease',
-					'padding #{_duration(demo)} ease',
-					'opacity #{_duration(demo)} ease'
+					'max-height #{_duration(slowReveal)} ease',
+					'padding #{_duration(slowReveal)} ease',
+					'opacity #{_duration(slowReveal)} ease'
 				));
 				@include vendor('transition-delay', '.35s');
 				padding: 0 2rem;
 				max-height: 40rem;
 				overflow: hidden;
+				opacity:1;
 
 				&.collapsed {
+					@include vendor('transition', (
+						'max-height #{_duration(fastCollapse)} ease',
+						'padding #{_duration(fastCollapse)} ease',
+						'opacity #{_duration(fastCollapse)} ease'
+					));
 					@include vendor('transition-delay', '0s');
+					opacity:0;
 					padding:0;
 					max-height:0;
 				}
