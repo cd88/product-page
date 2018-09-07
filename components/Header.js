@@ -25,11 +25,17 @@ const Header = (props) => (
         <nav>
             <ul>
                 <li><a href="javascript:;" onClick={() => {props.updateDemoState(true)}}>Demo</a></li>
-                <li><a href="javascript:;" onClick={() => {props.updateDemoState(false)}}>Purchase</a></li>
+                <li><a href="javascript:;" onClick={() => {props.onOpenArticle('purchase')}}>Purchase</a></li>
                 <li><a href="javascript:;" onClick={() => {props.onOpenArticle('about')}}>About</a></li>
                 <li><a href="javascript:;" onClick={() => {props.onOpenArticle('contact')}}>Contact</a></li>
             </ul>
         </nav>
+        <div className={`${props.isDemoVisible ? 'demoVisible' : ''} ${props.paintingIntro} cornerLogo`}>
+          <a href="javascript:;" onClick={() => {props.updateDemoState(false)}}>
+            <SpinningRectangles />
+            <h2 className="title">The Mulchmate</h2>
+          </a>
+        </div>
     </header>
 )
 
