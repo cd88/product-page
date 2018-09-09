@@ -61,7 +61,7 @@
 
 			&.demoVisible {
 				@include vendor('transition', (
-				'top #{_duration(article)} ease-in-out #{_duration(intro)}',
+				'top #{_duration(article)} ease-in-out #{_duration(slowReveal)}',
 				));
 				top:0;
 				display: block;
@@ -110,13 +110,14 @@
 				@include vendor('transition', (
 					'max-height #{_duration(demo)} ease 0.45s',
 					'padding #{_duration(demoPadding)} ease 0.6s',
-					'opacity #{_duration(demo)} ease 0.45s'
+					'opacity #{_duration(demo)} ease 0.55s'
 				));
 
 				padding: 3rem 2rem;
 				max-height: 15rem;
 				width: 600px;
 				overflow: hidden;
+				opacity: 1;
 
 				&.is-painting{
 					@include vendor('transition', (
@@ -133,9 +134,9 @@
 						'padding #{_duration(fasterDemoPadding)} ease',
 						'opacity #{_duration(fasterDemo)} ease'
 					));
-					@include vendor('transition-delay', '0s');
 					padding:0 2rem;
 					max-height:0;
+					opacity:0;
 				}
 
 				> :last-child {
@@ -147,7 +148,7 @@
 				@include vendor('transition', (
 					'max-height #{_duration(slowReveal)} ease',
 					'padding #{_duration(slowReveal)} ease',
-					'opacity #{_duration(slowReveal)} ease'
+					'opacity #{_duration(demo)} ease'
 				));
 				@include vendor('transition-delay', '.35s');
 				padding: 0 2rem;
@@ -159,9 +160,9 @@
 					@include vendor('transition', (
 						'max-height #{_duration(fastCollapse)} ease',
 						'padding #{_duration(fastCollapse)} ease',
-						'opacity #{_duration(fastCollapse)} ease'
+						'opacity #{_duration(demo)} ease'
 					));
-					@include vendor('transition-delay', '0s');
+
 					opacity:0;
 					padding:0;
 					max-height:0;
