@@ -7,24 +7,16 @@
   border: 4px solid white;
   border-radius: 2px;
   &.linear {
-    -webkit-animation:spin 4s linear infinite;
-    -moz-animation:spin 4s linear infinite;
-    animation:spin 4s linear infinite;
+    @include vendor('animation', 'spin 4s linear infinite');
   }
   &.lag1 {
-    -webkit-animation:spin 4s cubic-bezier(.05,.2,.95,.8) infinite;;
-    -moz-animation:spin 4s cubic-bezier(.05,.2,.95,.8) infinite;;
-    animation:spin 4s cubic-bezier(.05,.2,.95,.8) infinite;
+    @include vendor('animation', 'spin 4s cubic-bezier(.05,.2,.95,.8) infinite');
   }
   &.lag2 {
-    -webkit-animation:spin 4s cubic-bezier(.1,.4,.9,.6) infinite;;
-    -moz-animation:spin 4s cubic-bezier(.1,.4,.9,.6) infinite;;
-    animation:spin 4s cubic-bezier(.1,.4,.9,.6) infinite;
+    @include vendor('animation', 'spin 4s cubic-bezier(.1,.4,.9,.6) infinite');
   }
   &.lag3 {
-    -webkit-animation:spin 4s cubic-bezier(.15,.6,.85,.4) infinite;;
-    -moz-animation:spin 4s cubic-bezier(.15,.6,.85,.4) infinite;;
-    animation:spin 4s cubic-bezier(.15,.6,.85,.4) infinite;
+    @include vendor('animation', 'spin 4s cubic-bezier(.15,.6,.85,.4) infinite');
   }
 }
 
