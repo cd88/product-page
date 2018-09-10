@@ -15,7 +15,8 @@ class IndexPage extends React.Component {
             timeout: false,
             articleTimeout: false,
             article: "",
-            loading: "is-loading"
+            loading: "is-loading",
+            paintingIntro: "is-painting"
         }
         this.updateDemoState = this.updateDemoState.bind(this)
         this.handleOpenArticle = this.handleOpenArticle.bind(this)
@@ -26,16 +27,24 @@ class IndexPage extends React.Component {
         this.timeoutId = setTimeout(() => {
             this.setState({ loading: "" })
         }, 100)
+        this.paintingId = setTimeout(() => {
+            this.setState({ paintingIntro: "" })
+        }, 750)
     }
 
     componentWillUnmount() {
         if (this.timeoutId) {
             clearTimeout(this.timeoutId)
         }
+        if (this.paintingId) {
+            clearTimeout(this.paintingId)
+        }
     }
 
     updateDemoState(visibilityBoolean) {
-        this.setState({isDemoVisible: visibilityBoolean})
+        if(this.paintingId !== "is-painting") {
+          this.setState({isDemoVisible: visibilityBoolean})
+        }
     }
 
     handleOpenArticle(article) {
@@ -89,9 +98,10 @@ class IndexPage extends React.Component {
                     <div id="wrapper">
                         <Header
                             onOpenArticle={this.handleOpenArticle}
+                            updateDemoState={this.updateDemoState}
+                            paintingIntro={this.state.paintingIntro}
                             timeout={this.state.timeout}
                             isDemoVisible={this.state.isDemoVisible}
-                            updateDemoState={this.updateDemoState}
                         />
                         <Main
                             isArticleVisible={this.state.isArticleVisible}

@@ -36,7 +36,7 @@ const cardSize = 400
 const cardPadCount = enableLoop ? 3 : 0
 
 function log (text) {
-  document.getElementById('console').innerText = text
+  console.log(text)
 }
 
 function CarouselContainer (props) {
