@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
+import PropTypes from 'prop-types';
 import cx from 'classnames'
 import NonPassiveTouchTarget from './NonPassiveTouchTarget'
 import touchWithMouseHOC from 'react-touch-carousel/lib/touchWithMouseHOC'
@@ -45,6 +46,8 @@ function CarouselContainer (props) {
   let current = -Math.round(cursor) % carouselSlideData.length
   while (current < 0) {
     current += carouselSlideData.length
+    this.props.currentPage = current
+    console.log(this.props.currentPage)
   }
   // Put current card at center
   const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
@@ -64,20 +67,6 @@ function CarouselContainer (props) {
         style={{transform: `translate3d(${translateX}px, 0, 0)`}}
         {...rest}
       />
-
-      <div className='carousel-pagination-wrapper'>
-        <div className="carousel-pagination">
-          {carouselSlideData.map((_, index) => (
-            <button
-              key={index}
-              className={current === index ? 'current' : ''}
-
-            >
-            {index + 1}
-            </button>
-          ))}
-        </div>
-      </div>
     </NonPassiveTouchTarget>
   )
 }
@@ -120,6 +109,10 @@ class Carousel extends React.Component {
       />
     )
   }
+}
+
+Carousel.propTypes = {
+  currentPage: PropTypes.number
 }
 
 export default Carousel
