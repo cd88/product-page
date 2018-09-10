@@ -85,24 +85,31 @@
 		}
 
 		.carousel-pagination-wrapper {
-		  left: 0;
-		  right: 0;
+			position:absolute;
+		  margin-left:auto;
+			margin-right: auto;
 		  display: flex;
 			height:90px;
 			width:600px;
 		  justify-content: center;
+			margin-top: 3.5rem;
+			
+
 			&:before {
 				content:none;
 			}
 			&.collapsed {
-				display:none;
+				.carousel-pagination * {
+					position:absolute;
+				}
 			}
 
 			.carousel-pagination {
 			  position: absolute;
 			  display: flex;
-			  justify-content: space-between;
+			  justify-content: center;
 			  width: 400px;
+				height: 90px;
 			  padding: 0;
 
 				* {
@@ -111,6 +118,7 @@
 				  border-radius: 44px;
 				  font-size: 38px;
 				  font-family: "Source Sans Pro",sans-serif;
+
 				}
 				.current {
 				  background-color: rgba(255,255,255,.6);
