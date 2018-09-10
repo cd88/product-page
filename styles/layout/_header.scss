@@ -199,7 +199,7 @@
 						min-width: 7.5rem;
 						height: 2.75rem;
 						line-height: 2.75rem;
-						padding: 0 1.25rem 0 (1.25rem + _font(letter-spacing));
+						padding: 0 1rem 0 (1rem + _font(letter-spacing));
 						text-transform: uppercase;
 						letter-spacing: _font(letter-spacing);
 						font-size: 0.8rem;
@@ -213,6 +213,19 @@
 							background-color: _palette(border-bg-alt);
 						}
 					}
+					&:nth-child(3) {
+							border-left:none;
+					}
+				}
+				&:before {
+					content: '';
+					display: block;
+					position: absolute;
+					top: calc(-3.5rem - 1px);
+					left: calc(50% - #{_size(border-width) * 1});
+					width: _size(border-width);
+					height: calc(3.5rem + 47px);
+					background: _palette(border);
 				}
 			}
 
