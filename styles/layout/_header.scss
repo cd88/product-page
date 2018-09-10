@@ -43,6 +43,48 @@
 			}
 		}
 
+		.cornerLogo {
+			@include vendor('transition', (
+			'top #{_duration(article)} ease-in-out #{_duration(demo)}',
+			));
+			position: fixed;
+			top: -60px;
+			left:0;
+			margin:0;
+
+			&:before {
+				display:none;
+			}
+			&.is-painting {
+				display:none;
+			}
+
+			&.demoVisible {
+				@include vendor('transition', (
+				'top #{_duration(article)} ease-in-out #{_duration(slowReveal)}',
+				));
+				top:0;
+				display: block;
+			}
+
+			.circle {
+				@include vendor('transform', (
+					'scale(.5)'
+					'translateY(-24px)'
+				));
+				border: 2px solid white;
+				border-radius: 44px;
+				width: 88px;
+				height: 88px;
+				position: absolute;
+			}
+		 	.title {
+				font-size: 1.4rem;
+				margin: 16px 0 0 78px;
+				letter-spacing: .05rem + _font(letter-spacing);
+			}
+		}
+
 		.logo {
 			width: 5.5rem;
 			height: 5.5rem;
@@ -66,19 +108,35 @@
 
 			.inner {
 				@include vendor('transition', (
+					'max-height #{_duration(demo)} ease 0.45s',
+					'padding #{_duration(demoPadding)} ease 0.6s',
+					'opacity #{_duration(demo)} ease 0.55s'
+				));
+
+				padding: 3rem 2rem;
+				max-height: 15rem;
+				width: 600px;
+				overflow: hidden;
+				opacity: 1;
+
+				&.is-painting{
+					@include vendor('transition', (
 					'max-height #{_duration(intro)} ease',
 					'padding #{_duration(intro)} ease',
-					'opacity #{_duration(article)} ease-in-out'
-				));
-				@include vendor('transition-delay', '0.25s');
-				padding: 3rem 2rem;
-				max-height: 40rem;
-				overflow: hidden;
+					'opacity #{_duration(article)} ease'
+					));
+					@include vendor('transition-delay', '0.25s');
+				}
 
-				&.collapse {
-					@include vendor('transition-delay', '0s');
-					padding:0;
+				&.collapsed {
+					@include vendor('transition', (
+						'max-height #{_duration(fasterDemo)} ease',
+						'padding #{_duration(fasterDemoPadding)} ease',
+						'opacity #{_duration(fasterDemo)} ease'
+					));
+					padding:0 2rem;
 					max-height:0;
+					opacity:0;
 				}
 
 				> :last-child {
@@ -88,17 +146,24 @@
 
 			.demo {
 				@include vendor('transition', (
-					'max-height #{_duration(intro)} ease',
-					'padding #{_duration(intro)} ease',
-					'opacity #{_duration(article)} ease-in-out'
+					'max-height #{_duration(slowReveal)} ease',
+					'padding #{_duration(slowReveal)} ease',
+					'opacity #{_duration(demo)} ease'
 				));
-				@include vendor('transition-delay', '1s');
+				@include vendor('transition-delay', '.35s');
 				padding: 0 2rem;
 				max-height: 40rem;
 				overflow: hidden;
+				opacity:1;
 
-				&.collapse {
-					@include vendor('transition-delay', '0s');
+				&.collapsed {
+					@include vendor('transition', (
+						'max-height #{_duration(fastCollapse)} ease',
+						'padding #{_duration(fastCollapse)} ease',
+						'opacity #{_duration(demo)} ease'
+					));
+
+					opacity:0;
 					padding:0;
 					max-height:0;
 				}
