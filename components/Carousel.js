@@ -15,17 +15,17 @@ const carouselSlideData = [
   {
     title: 'Step 1',
     text: "Insert the Mulchmate diagonally downward into a Lawn Bag",
-    image: process.env.BACKEND_URL + "static/images/mulchmate-demo-slide-1"
+    image: "static/images/mulchmate-demo-slide-1"
   },
   {
     title: 'Step 2',
     text: "Lift and guide the Mulchmate corners until snug against the bag corners",
-    image: process.env.BACKEND_URL + "static/images/mulchmate-demo-slide-2"
+    image: "static/images/mulchmate-demo-slide-2"
   },
   {
     title: 'Step 3',
     text: "Ready to use! The bag will stand & remain open while you fill it",
-    image: process.env.BACKEND_URL + "static/images/mulchmate-demo-slide-3"
+    image: "static/images/mulchmate-demo-slide-3"
   }
 ]
 
@@ -86,7 +86,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img src={imgURL}/>
+          <img src={`${process.env.BACKEND_URL} ${imgURL}`}/>
         </div>
       </div>
     )
