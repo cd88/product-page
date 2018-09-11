@@ -17,8 +17,6 @@ class Header extends React.Component {
     this.concealDemoAnimationSequence = this.concealDemoAnimationSequence.bind(this)
   }
 
-  animationTimer(stage) { return stage * 1000 }
-
   revealDemoAnimationSequence(){
     this.setState({
       animationState: 'revealDemoStage1'
@@ -41,23 +39,19 @@ class Header extends React.Component {
   }
 
   concealDemoAnimationSequence(){
-    console.log(this.state.animationState)
     this.setState({
       animationState: 'concealDemoStage1'
     })
-    console.log(this.state.animationState)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage2')
         })
     }, 250)
-    console.log(this.state.animationState)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage3')
         })
     }, 750)
-    console.log(this.state.animationState)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage4')
@@ -68,8 +62,6 @@ class Header extends React.Component {
           animationState: ''
         })
     }, 1500)
-    console.log(this.state.animationState)
-
   }
 
   render() {
