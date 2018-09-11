@@ -132,7 +132,7 @@
 
 		.content {
 			@include vendor('transition', (
-			'margin 1.75s ease-in-out'
+			'margin 1.6s ease-in-out'
 			));
 			border-style: solid;
 			border-color: _palette(border);
@@ -146,7 +146,7 @@
 				));
 			}
 			&.revealDemoStage1 {
-				margin-top: 1.5rem;
+				margin-top: 2rem;
 				&:before {
 					height:2.5rem;
 					top:calc(-3rem + 5px);
