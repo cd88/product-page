@@ -92,7 +92,7 @@
 			border: solid _size(border-width) _palette(border);
 			border-radius: 100%;
 			opacity:1;
-			@include vendor('transition', ('opacity #{_duration(intro)}'))
+			@include vendor('transition', ('opacity #{_duration(intro)}' ease-in))
 			&:before {
 				content:none;
 			}
@@ -107,14 +107,18 @@
 				display: none;
 			}
 			&.concealDemoStage1{
+				@include vendor('transition', ('opacity #{_duration(slower)}'))
 				position:absolute;
 				display: none;
 				opacity: 0;
 			}
-			&.concealDemoStage3{
+			&.concealDemoStage2{
 				display:block;
-				opacity: 1;
+			}
+
+			&.concealDemoStage3{
 				@include vendor('animation', 'spinX .75s linear 4');
+				opacity: 1;
 			}
 			&.concealDemoStage4 {
 				position:relative;
