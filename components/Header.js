@@ -10,7 +10,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentPage: 0,
+      currentSlide: 0,
       animationState: ''
     }
     this.revealDemoAnimationSequence = this.revealDemoAnimationSequence.bind(this)
@@ -73,7 +73,7 @@ class Header extends React.Component {
 
                   <button
                     key={index}
-                    className={`${this.state.animationState} ${this.state.currentPage === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
+                    className={`${this.state.animationState} ${this.state.currentSlide === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
                   >
                   <div></div>
                   {index + 1}
@@ -91,7 +91,7 @@ class Header extends React.Component {
                   <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
               </div>
               <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
-                <Carousel currentPage={this.state.currentPage}/>
+                <Carousel currentSlide={this.state.currentSlide}/>
                   {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
               </div>
           </div>
