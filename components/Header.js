@@ -5,65 +5,114 @@ import faGem from '@fortawesome/fontawesome-free-regular/faGem'
 import SpinningRectangles from './SpinningRectangles'
 import Carousel from './Carousel'
 
+
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       currentPage: 0,
-      logoAnimationClasses: '',
-      paginationAnimationClasses: '',
+      animationState: ''
     }
-    this.triggerDemoAnimationSequence = this.triggerDemoAnimationSequence.bind(this)
+    this.revealDemoAnimationSequence = this.revealDemoAnimationSequence.bind(this)
+    this.concealDemoAnimationSequence = this.concealDemoAnimationSequence.bind(this)
   }
 
-  triggerDemoAnimationSequence(){
+  animationTimer(stage) { return stage * 1000 }
+
+  revealDemoAnimationSequence(){
+    this.setState({
+      animationState: 'revealDemoStage1'
+    })
     setTimeout(() => {
         this.setState({
-
+          animationState: this.state.animationState.concat(' revealDemoStage2')
         })
-    }, 325)
+    }, 350)
+    setTimeout(() => {
+        this.setState({
+          animationState: this.state.animationState.concat(' revealDemoStage3')
+        })
+    }, 1000)
+    setTimeout(() => {
+        this.setState({
+          animationState: this.state.animationState.concat(' revealDemoStage4')
+        })
+    }, 1500)
+  }
+
+  concealDemoAnimationSequence(){
+    console.log(this.state.animationState)
+    this.setState({
+      animationState: 'concealDemoStage1'
+    })
+    console.log(this.state.animationState)
+    setTimeout(() => {
+        this.setState({
+          animationState: this.state.animationState.concat(' concealDemoStage2')
+        })
+    }, 250)
+    console.log(this.state.animationState)
+    setTimeout(() => {
+        this.setState({
+          animationState: this.state.animationState.concat(' concealDemoStage3')
+        })
+    }, 750)
+    console.log(this.state.animationState)
+    setTimeout(() => {
+        this.setState({
+          animationState: this.state.animationState.concat(' concealDemoStage4')
+        })
+    }, 1300)
+    setTimeout(() => {
+        this.setState({
+          animationState: ''
+        })
+    }, 1500)
+    console.log(this.state.animationState)
+
   }
 
   render() {
     return (
       <header id="header" style={this.props.timeout ? {display: 'none'} : {}}>
-          <div className={`${this.props.isDemoVisible ? '' : 'collapsed' } carousel-pagination-wrapper`}>
+          <div className={`carousel-pagination-wrapper ${this.state.animationState}`}>
             <div className="carousel-pagination">
                 {[1,2,3].map((_, index) => (
+
                   <button
                     key={index}
-                    className={`${this.state.currentPage === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
-
+                    className={`${this.state.animationState} ${this.state.currentPage === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
                   >
+                  <div></div>
                   {index + 1}
                   </button>
                 ))}
 
             </div>
           </div>
-          <div className={`${this.props.isDemoVisible ? 'collapsed' : '' } logo `}>
+          <div className={`logo ${this.state.animationState}`}>
             <SpinningRectangles />
           </div>
-          <div className={`${this.props.isDemoVisible ? 'demo' : '' } content`}>
-              <div className={`${this.props.isDemoVisible ? 'collapsed' : ''} ${this.props.paintingIntro} inner`}>
+          <div className={`content ${this.state.animationState}`}>
+              <div className={`inner ${this.props.isDemoVisible ? 'collapsed' : ''} ${this.props.paintingIntro}`}>
                   <h1>The Mulchmate</h1>
                   <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
               </div>
-              <div className={this.props.isDemoVisible ? 'demo' : 'collapsed demo'}>
+              <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
                 <Carousel currentPage={this.state.currentPage}/>
                   {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
               </div>
           </div>
           <nav>
               <ul>
-                  <li><a href="javascript:;" onClick={() => {if(!this.props.isDemoVisible) {this.props.updateDemoState(true); this.triggerDemoAnimationSequence()}}}>Demo</a></li>
+                  <li><a href="javascript:;" onClick={() => {if(!this.props.isDemoVisible) {this.props.updateDemoState(true); this.revealDemoAnimationSequence()}}}>Demo</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('purchase')}}>Purchase</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('about')}}>About</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('contact')}}>Contact</a></li>
               </ul>
           </nav>
-          <div className={`${this.props.isDemoVisible ? 'demoVisible' : ''} ${this.props.paintingIntro} cornerLogo`}>
-            <a href="javascript:;" onClick={() => {this.props.updateDemoState(false)}}>
+          <div className={`cornerLogo ${this.props.isDemoVisible ? 'demoVisible' : ''} ${this.props.paintingIntro}`}>
+            <a href="javascript:;" onClick={() => {this.concealDemoAnimationSequence(); this.props.updateDemoState(false)}}>
               <SpinningRectangles />
               <h2 className="title">The Mulchmate</h2>
             </a>
