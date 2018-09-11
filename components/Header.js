@@ -10,11 +10,12 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentSlide: 0,
-      animationState: ''
+      animationState: '',
+      currentSlide: 0
     }
     this.revealDemoAnimationSequence = this.revealDemoAnimationSequence.bind(this)
     this.concealDemoAnimationSequence = this.concealDemoAnimationSequence.bind(this)
+    this.updateCurrentSlide = this.updateCurrentSlide.bind(this)
   }
 
   revealDemoAnimationSequence(){
@@ -64,6 +65,12 @@ class Header extends React.Component {
     }, 1500)
   }
 
+  updateCurrentSlide(index) {
+    this.setState({
+      currentSlide: index
+    })
+  }
+
   render() {
     return (
       <header id="header" style={this.props.timeout ? {display: 'none'} : {}}>
@@ -91,7 +98,7 @@ class Header extends React.Component {
                   <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
               </div>
               <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
-                <Carousel currentSlide={this.state.currentSlide}/>
+                <Carousel updateCurrentSlide={this.updateCurrentSlide}/>
                   {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
               </div>
           </div>

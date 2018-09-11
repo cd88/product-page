@@ -65,6 +65,7 @@
           position: absolute;
           top:0;
           left:0;
+          background-image: radial-gradient(rgba(255,255,255,.4) 20%, transparent 110%);
           @include vendor('transition', (
             'opacity #{_duration(intro)} ease-out'
           ))
@@ -78,8 +79,9 @@
           display: block;
         }
         &.revealDemoStage3 {
-          /* show text */
-
+          &.current div {
+            display: block;
+          }
           &:first-child {
             left: 0;
           }
@@ -92,8 +94,6 @@
           color: hsla(100, 100%, 100%, 1);
           &.current div {
             opacity: 1;
-            display: block;
-            background-image: radial-gradient(rgba(255,255,255,.4) 20%, transparent 110%);
           }
           @include vendor('animation', 'none');
         }
@@ -101,7 +101,6 @@
           @include vendor('animation', 'spinX .75s linear infinite');
           display: block;
           color: hsla(100, 100%, 100%, 0);
-          background-color: transparent;
           &:first-child {
             left: 156px;
           }
@@ -110,6 +109,9 @@
           }
         }
         &.concealDemoStage2 {
+          &.current div {
+            opacity: 0;
+          }
         }
         &.concealDemoStage3 {
 
