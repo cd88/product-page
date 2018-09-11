@@ -1,0 +1,122 @@
+#header {
+  .carousel-pagination-wrapper {
+    position:absolute;
+    margin-left:auto;
+    margin-right: auto;
+    display: flex;
+    height:88px;
+    width:600px;
+    justify-content: center;
+    margin-top: 3.5rem;
+
+    &:before {
+      content:none;
+    }
+    &.revealDemoStage2 {
+      position: relative;
+    }
+    &.concealDemoStage1 {
+      position: relative;
+    }
+    &.concealDemoStage4 {
+      position: absolute;
+    }
+
+    .carousel-pagination {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 400px;
+      height: 88px;
+      padding: 0;
+
+      button {
+        width:88px;
+        height:88px;
+        border-radius: 44px;
+        font-size: 38px;
+        font-family: "Source Sans Pro",sans-serif;
+        position: absolute;
+        @include vendor('transition', (
+          'left #{_duration(demo)} ease-out',
+          'right #{_duration(demo)} ease-out',
+          'color #{_duration(intro)} ease #{_duration(intro)}',
+          'background-color #{_duration(intro)} ease'
+        ));
+        /* Hide the text. */
+        text-indent: 200%;
+        color: hsla(100, 100%, 100%, 0);
+        white-space: nowrap;
+        overflow: hidden;
+        /* Remove background */
+        background-color: transparent;
+        &:first-child {
+          left: 156px;
+        }
+        &:last-child {
+          right: 156px;
+        }
+        div {
+          width:88px;
+          height:88px;
+          border-radius: 44px;
+          opacity:0;
+          display:none;
+          position: absolute;
+          top:0;
+          left:0;
+          @include vendor('transition', (
+            'opacity #{_duration(intro)} ease-out'
+          ))
+        }
+
+
+        &.revealDemoStage1 {
+          @include vendor('animation', 'spinX .75s linear infinite');
+        }
+        &.revealDemoStage2 {
+          display: block;
+        }
+        &.revealDemoStage3 {
+          /* show text */
+
+          &:first-child {
+            left: 0;
+          }
+          &:last-child {
+            right: 0;
+          }
+        }
+        &.revealDemoStage4 {
+          text-indent: 0;
+          color: hsla(100, 100%, 100%, 1);
+          &.current div {
+            opacity: 1;
+            display: block;
+            background-image: radial-gradient(rgba(255,255,255,.4) 0%, transparent 90%);
+          }
+          @include vendor('animation', 'none');
+        }
+        &.concealDemoStage1 {
+          @include vendor('animation', 'spinX .75s linear infinite');
+          display: block;
+          color: hsla(100, 100%, 100%, 0);
+          background-color: transparent;
+          &:first-child {
+            left: 156px;
+          }
+          &:last-child {
+            right: 156px;
+          }
+        }
+        &.concealDemoStage2 {
+        }
+        &.concealDemoStage3 {
+
+        }
+      }
+    }
+  }
+}
+
+@keyframes spinX { 100% { -webkit-transform: rotate3d(0, 1, 0, 360deg); transform: rotate3d(0, 1, 0, 360deg); } }
