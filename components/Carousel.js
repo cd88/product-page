@@ -46,8 +46,6 @@ function CarouselContainer (props) {
   let current = -Math.round(cursor) % carouselSlideData.length
   while (current < 0) {
     current += carouselSlideData.length
-    this.props.currentPage = current
-    console.log(this.props.currentPage)
   }
   // Put current card at center
   const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
@@ -102,7 +100,7 @@ class Carousel extends React.Component {
         loop={enableLoop}
         autoplay={enableAutoplay ? 2e3 : false}
         renderCard={this.renderCard}
-        onRest={index => log(`rest at index ${index}`)}
+        onRest={index => {this.props.updateCurrentSlide(index)}}
         onDragStart={() => log('dragStart')}
         onDragEnd={() => log('dragEnd')}
         onDragCancel={() => log('dragCancel')}
@@ -112,7 +110,7 @@ class Carousel extends React.Component {
 }
 
 Carousel.propTypes = {
-  currentPage: PropTypes.number
+  updateCurrentSlide: PropTypes.func
 }
 
 export default Carousel

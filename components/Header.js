@@ -10,11 +10,12 @@ class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentPage: 0,
-      animationState: ''
+      animationState: '',
+      currentSlide: 0
     }
     this.revealDemoAnimationSequence = this.revealDemoAnimationSequence.bind(this)
     this.concealDemoAnimationSequence = this.concealDemoAnimationSequence.bind(this)
+    this.updateCurrentSlide = this.updateCurrentSlide.bind(this)
   }
 
   revealDemoAnimationSequence(){
@@ -64,6 +65,12 @@ class Header extends React.Component {
     }, 1500)
   }
 
+  updateCurrentSlide(index) {
+    this.setState({
+      currentSlide: index
+    })
+  }
+
   render() {
     return (
       <header id="header" style={this.props.timeout ? {display: 'none'} : {}}>
@@ -73,7 +80,7 @@ class Header extends React.Component {
 
                   <button
                     key={index}
-                    className={`${this.state.animationState} ${this.state.currentPage === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
+                    className={`${this.state.animationState} ${this.state.currentSlide === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
                   >
                   <div></div>
                   {index + 1}
@@ -91,7 +98,7 @@ class Header extends React.Component {
                   <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
               </div>
               <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
-                <Carousel currentPage={this.state.currentPage}/>
+                <Carousel updateCurrentSlide={this.updateCurrentSlide}/>
                   {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
               </div>
           </div>
