@@ -38,8 +38,8 @@
         font-family: "Source Sans Pro",sans-serif;
         position: absolute;
         @include vendor('transition', (
-          'left #{_duration(demo)} ease-out',
-          'right #{_duration(demo)} ease-out',
+          'left #{_duration(slowReveal)} ease-in-out',
+          'right #{_duration(slowReveal)} ease-in-out',
           'color #{_duration(intro)} ease #{_duration(intro)}',
           'background-color #{_duration(intro)} ease'
         ));
@@ -93,7 +93,7 @@
           &.current div {
             opacity: 1;
             display: block;
-            background-image: radial-gradient(rgba(255,255,255,.4) 0%, transparent 90%);
+            background-image: radial-gradient(rgba(255,255,255,.4) 20%, transparent 110%);
           }
           @include vendor('animation', 'none');
         }
