@@ -81,6 +81,7 @@ class Header extends React.Component {
                   <button
                     key={index}
                     className={`${this.state.animationState} ${this.state.currentSlide === index ? 'current' : ''} ${'carouselPagePicker' + (1+index)}`}
+                    onClick={(event) => {this.carousel.handlePaginationClick(index)}}
                   >
                   <div></div>
                   {index + 1}
@@ -98,7 +99,7 @@ class Header extends React.Component {
                   <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
               </div>
               <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
-                <Carousel updateCurrentSlide={this.updateCurrentSlide}/>
+                <Carousel ref={instance => { this.carousel = instance; }} updateCurrentSlide={this.updateCurrentSlide}/>
                   {/*<pre className="ui-center"><code id="console" ></code></pre>*/}
               </div>
           </div>
