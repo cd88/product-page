@@ -16,17 +16,17 @@ const carouselSlideData = [
   {
     title: 'Step 1',
     text: "Insert the Mulchmate diagonally downward into a Lawn Bag",
-    image: "static/images/mulchmate-demo-slide-1"
+    imageUrl: "static/images/mulchmate-demo-slide-1.png"
   },
   {
     title: 'Step 2',
     text: "Lift and guide the Mulchmate corners until snug against the bag corners",
-    image: "static/images/mulchmate-demo-slide-2"
+    imageUrl: "static/images/mulchmate-demo-slide-2.png"
   },
   {
     title: 'Step 3',
     text: "Ready to use! The bag will stand & remain open while you fill it",
-    image: "static/images/mulchmate-demo-slide-3"
+    imageUrl: "static/images/mulchmate-demo-slide-3.png"
   }
 ]
 
@@ -75,7 +75,6 @@ const Container = touchWithMouseHOC(CarouselContainer)
 class Carousel extends React.Component {
   renderCard (index, modIndex) {
     const item = carouselSlideData[modIndex]
-    const imgURL = `/static/images/mulchmate-demo-slide-${1 + modIndex}.png`
     return (
       <div
         key={index}
@@ -85,7 +84,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img draggable="false" src={process.env.BACKEND_URL + imgURL}/>
+          <img draggable="false" src={process.env.BACKEND_URL + item.imageUrl}/>
         </div>
       </div>
     )
