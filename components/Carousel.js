@@ -85,7 +85,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img draggable='false' src={process.env.BACKEND_URL + imgURL}/>
+          <img draggable="false" src={process.env.BACKEND_URL + imgURL}/>
         </div>
       </div>
     )
