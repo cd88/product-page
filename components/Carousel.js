@@ -11,6 +11,7 @@ import TouchCarousel, {clamp} from 'react-touch-carousel'
 // export default TouchCarousel
 // export touchWithMouseHOC
 
+
 const carouselSlideData = [
   {
     title: 'Step 1',
@@ -84,12 +85,16 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img src={process.env.BACKEND_URL + imgURL}/>
+          <img draggable='false' src={process.env.BACKEND_URL + imgURL}/>
         </div>
       </div>
     )
   }
-
+  handlePaginationClick(index) {
+    this.props.updateCurrentSlide(index)
+    this.touchCarousel.go(0-index)
+    console.log(targetCursor)
+  }
   render () {
     return (
       <TouchCarousel
@@ -104,6 +109,7 @@ class Carousel extends React.Component {
         onDragStart={() => log('dragStart')}
         onDragEnd={() => log('dragEnd')}
         onDragCancel={() => log('dragCancel')}
+        ref={instance => { this.touchCarousel = instance }}
       />
     )
   }
