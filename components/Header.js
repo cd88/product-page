@@ -90,8 +90,10 @@ class Header extends React.Component {
 
             </div>
           </div>
-          <div className={`logo ${this.state.animationState}`}>
-            <SpinningRectangles />
+          <div className={`logoWrapper ${this.state.animationState}`}>
+            <div className={`logo ${this.state.animationState}`}>
+              <SpinningRectangles />
+            </div>
           </div>
           <div className={`content ${this.state.animationState}`}>
               <div className={`inner ${this.props.isDemoVisible ? 'collapsed' : ''} ${this.props.paintingIntro}`}>
