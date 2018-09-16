@@ -49,7 +49,9 @@
 }
 
 .carousel-text {
-  padding: 1em;
+  margin: auto;
+  width: _size(slide-image-width-xl);
+  padding: 1em 0;
   font-size: 14px;
   white-space: pre-wrap;
   font-family: sans-serif;
