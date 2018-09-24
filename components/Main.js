@@ -5,9 +5,48 @@ import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
 
+import ProductPurchaseForm from './ProductPurchaseForm'
+
 
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      transactionStatus: 'clean',
+      failedTransactions: 0
+    }
+  }
+
+  function PurchasePageContent() {
+    const status = this.state.transactionStatus;
+    switch(status) {
+      case 'success':
+        return <SuccessPage />;
+        break;
+      case 'error':
+        let failedTransactions = this.state.failedTransactions++
+        this.setState({failedTransactions})
+
+        if (failedTransactions >= 3) {
+          return <ErrorPage />;
+          break;
+        } else {
+          this.setState.({transactionStatus: 'retry'})
+        }
+      default:
+        return <ProductPurchaseForm
+                  updateTransactionStatus={this.updateTransactionStatus}
+                />;
+    }
+  }
+
+  updateTransactionStatus(results) {
+    this.setState({
+      transactionStatus: results
+    })
+  }
+
 
   render() {
 
@@ -21,19 +60,8 @@ class Main extends React.Component {
         <article id="purchase" className={`${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Purchase</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"} alt="A picture of The Mulchmate in action" /></span>
-          <form>
-            <script
-              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-              data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
-              data-amount="999"
-              data-name="Stripe.com"
-              data-description="Example charge"
-              data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-              data-locale="auto"
-              data-zip-code="true">
-            </script>
-          </form>
           {close}
+          <PurchasePageContent isLoggedIn={false} />
         </article>
 
         <article id="about" className={`${this.props.article === 'about' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
