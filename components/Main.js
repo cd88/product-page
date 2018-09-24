@@ -7,6 +7,27 @@ import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
 
 import ProductPurchaseForm from './ProductPurchaseForm'
 
+function PurchasePageContent(props) {
+  let status = props.transactionStatus;
+  switch(status) {
+    case 'success':
+      return <SuccessPage />;
+      break;
+    case 'error':
+      let failedTransactions = props.failedTransactions++
+      props.updateFailedTransactions(failedTransactions)
+      if (failedTransactions >= 3) {
+        return <ErrorPage />;
+        break;
+      } else {
+        props.updateTransactionStatus('retry')
+      }
+    default:
+      return <ProductPurchaseForm
+              updateTransactionStatus={props.transactionStatus}
+              />;
+  }
+}
 
 
 class Main extends React.Component {
@@ -16,30 +37,10 @@ class Main extends React.Component {
       transactionStatus: 'clean',
       failedTransactions: 0
     }
+    this.updateTransactionStatus = this.updateTransactionStatus.bind(this);
+
   }
 
-  function PurchasePageContent() {
-    const status = this.state.transactionStatus;
-    switch(status) {
-      case 'success':
-        return <SuccessPage />;
-        break;
-      case 'error':
-        let failedTransactions = this.state.failedTransactions++
-        this.setState({failedTransactions})
-
-        if (failedTransactions >= 3) {
-          return <ErrorPage />;
-          break;
-        } else {
-          this.setState.({transactionStatus: 'retry'})
-        }
-      default:
-        return <ProductPurchaseForm
-                  updateTransactionStatus={this.updateTransactionStatus}
-                />;
-    }
-  }
 
   updateTransactionStatus(results) {
     this.setState({
@@ -61,7 +62,9 @@ class Main extends React.Component {
           <h2 className="major">Purchase</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"} alt="A picture of The Mulchmate in action" /></span>
           {close}
-          <PurchasePageContent isLoggedIn={false} />
+          <PurchasePageContent
+            updateTransactionStatus={this.updateTransactionStatus}
+            transactionStatus={this.state.transactionStatus}/>
         </article>
 
         <article id="about" className={`${this.props.article === 'about' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
