@@ -1,6 +1,12 @@
 import React, {Component} from 'react'
 import {render} from 'react-dom'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import faPlus from '@fortawesome/react-fontawesome'
+import faMinus from '@fortawesome/react-fontawesome'
+
+import NumberPicker from './NumberPicker'
+
 // export {
 //   clamp: somethingTheyalreadyCreated
 // }
@@ -32,8 +38,19 @@ class ProductPurchaseForm extends React.Component {
         <h3 className="name">{productInfo.name}</h3>
         <h4 className="description">{productInfo.description}</h4>
         <h6 className="size">dimensions: {productInfo.dimensions}</h6>
+
+        <NumberPicker />
+
+        {/*<Form.Field control={NumberPicker}
+          name={"multipleOfThree"}
+          value={this.getValue("multipleOfThree")}
+          onChange={this.updateNumberPicker}
+          label="quantity"
+          placeholder="Quantity"
+          min={1}
+          max={20}/>*/}
         <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          src="https://checkout.stripe.com/checkout.js" className="stripe-button"
           data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
           data-amount="999"
           data-name="Stripe.com"
