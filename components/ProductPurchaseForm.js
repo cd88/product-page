@@ -8,13 +8,11 @@ import PropTypes from 'prop-types';
 // export touchWithMouseHOC
 
 
-const productInfo = [
-  {
-    name: "The Mulchmate",
-    dimensions: "22 x 14 in.",
-
-  }
-]
+const productInfo = {
+  name: "The Mulchmate",
+  description: "This is the description of The Mulchmate, reiterate the value proposition here",
+  dimensions: "22 x 14 in."
+}
 
 class ProductPurchaseForm extends React.Component {
   launchLambdaServer(data) {
@@ -26,7 +24,14 @@ class ProductPurchaseForm extends React.Component {
   }
   render () {
     return (
-      <form>
+      <form className="product-form">
+        <span className="display">
+          <img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"}
+            alt="The Mulchmate holds a yard waste paper bag open and upright" />
+        </span>
+        <h3 className="name">{productInfo.name}</h3>
+        <h4 className="description">{productInfo.description}</h4>
+        <h6 className="size">dimensions: {productInfo.dimensions}</h6>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"

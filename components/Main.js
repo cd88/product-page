@@ -59,8 +59,7 @@ class Main extends React.Component {
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="purchase" className={`${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Purchase</h2>
-          <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"} alt="A picture of The Mulchmate in action" /></span>
+
           {close}
           <PurchasePageContent
             updateTransactionStatus={this.updateTransactionStatus}
