@@ -92,7 +92,7 @@ class Carousel extends React.Component {
   handlePaginationClick(index) {
     this.props.updateCurrentSlide(index)
     this.touchCarousel.go(0-index)
-    console.log(targetCursor)
+    console.log(index)
   }
   render () {
     return (
