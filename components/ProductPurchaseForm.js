@@ -21,12 +21,41 @@ const productInfo = {
 }
 
 class ProductPurchaseForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      purchaseQuantity: 1
+    }
+    this.updatePurchaseQuantity = this.updatePurchaseQuantity.bind(this)
+  }
+
   launchLambdaServer(data) {
     console.log(data)
   }
+
   handleTransactionResults(results) {
     console.log(results)
     this.props.updateTransactionStatus("success")
+  }
+
+  updatePurchaseQuantity(int) {
+    this.updateTotal(int)
+    this.setState({
+      purchaseQuantity: int
+    })
+  }
+  updateTotal(int) {
+    switch(int) {
+      case (int <= 4):
+        break;
+      case (int <= 9):
+        break;
+      default:
+        break;
+    }
+    this.setState({
+      purchaseQuantity: int
+    })
   }
   render () {
     return (
@@ -39,7 +68,7 @@ class ProductPurchaseForm extends React.Component {
         <h4 className="description">{productInfo.description}</h4>
         <h6 className="size">dimensions: {productInfo.dimensions}</h6>
 
-        <NumberPicker />
+        <NumberPicker updatePurchaseQuantity={this.updatePurchaseQuantity}/>
 
         {/*<Form.Field control={NumberPicker}
           name={"multipleOfThree"}
@@ -65,7 +94,7 @@ class ProductPurchaseForm extends React.Component {
 }
 
 ProductPurchaseForm.propTypes = {
-  updateTransactionStatus: PropTypes.func
+  updateTransactionStatus: PropTypes.string
 }
 
 export default ProductPurchaseForm

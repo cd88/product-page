@@ -12,13 +12,7 @@ import faMinus from '@fortawesome/react-fontawesome'
 // export touchWithMouseHOC
 
 
-const productInfo = {
-  name: "The Mulchmate",
-  description: "This is the description of The Mulchmate, reiterate the value proposition here",
-  dimensions: "22 x 14 in."
-}
-
-class ProductPurchaseForm extends React.Component {
+class NumberPicker extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: '1'};
@@ -27,10 +21,21 @@ class ProductPurchaseForm extends React.Component {
   }
 
   handleChange(event) {
-      let val = event.target.value <= 0 ? 1
-        : event.target.value >= 21 ? 20
+      let val = this.state.value
+      /* 1-20, 25, 30, 35, 40 */
+      let newVal = event.target.value <= 0 ? 1
+        : event.target.value > 20 && event.target.value < 25 ?
+            val === 20 ? 25 : 20
+        : event.target.value > 25 && event.target.value < 30 ?
+            val === 25 ? 30 : 25
+        : event.target.value > 30 && event.target.value < 35 ?
+            val === 30 ? 35 : 30
+        : event.target.value > 35 && event.target.value < 40 ?
+            val === 35 ? 40 : 35
+        : event.target.value > 40 ? (()=>{ alert('they want more than 40'); return 40})()
         : event.target.value
-      this.setState({value: val});
+      this.setState({value: newVal});
+      this.props.updatePurchaseQuantity(val);
     }
 
   render () {
@@ -40,14 +45,15 @@ class ProductPurchaseForm extends React.Component {
         <input type="number"
           value={this.state.value}
           onChange={this.handleChange}
+
         />
       </label>
     )
   }
 }
 
-ProductPurchaseForm.propTypes = {
-  updateTransactionStatus: PropTypes.func
+NumberPicker.propTypes = {
+  updatePurchaseQuantity: PropTypes.func
 }
 
-export default ProductPurchaseForm
+export default NumberPicker
