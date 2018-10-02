@@ -38,8 +38,8 @@
         font-family: "Source Sans Pro",sans-serif;
         position: absolute;
         @include vendor('transition', (
-          'left #{_duration(demo)} ease-out',
-          'right #{_duration(demo)} ease-out',
+          'left .45s ease-out',
+          'right .45s ease-out',
           'color #{_duration(intro)} ease #{_duration(intro)}',
           'background-color #{_duration(intro)} ease'
         ));
@@ -73,7 +73,7 @@
 
 
         &.revealDemoStage1 {
-          @include vendor('animation', 'spinX .75s linear infinite');
+          @include vendor('animation', 'spinX .6s linear infinite');
         }
         &.revealDemoStage2 {
           display: block;
@@ -98,7 +98,11 @@
           @include vendor('animation', 'none');
         }
         &.concealDemoStage1 {
-          @include vendor('animation', 'spinX .75s linear infinite');
+          @include vendor('transition', (
+            'left #{_duration(article)} ease-out',
+            'right #{_duration(article)} ease-out'
+          ))
+          @include vendor('animation', 'spinX .6s linear infinite');
           display: block;
           color: hsla(100, 100%, 100%, 0);
           &:first-child {

@@ -26,17 +26,18 @@ class Header extends React.Component {
         this.setState({
           animationState: this.state.animationState.concat(' revealDemoStage2')
         })
-    }, 350)
+        this.props.updateDemoState(true);
+    }, 100)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' revealDemoStage3')
         })
-    }, 750)
+    }, 450)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' revealDemoStage4')
         })
-    }, 1150)
+    }, 900)
   }
 
   concealDemoAnimationSequence(){
@@ -44,10 +45,11 @@ class Header extends React.Component {
       animationState: 'concealDemoStage1'
     })
     setTimeout(() => {
+      this.props.updateDemoState(false)
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage2')
         })
-    }, 250)
+    }, 50)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage3')
@@ -57,12 +59,12 @@ class Header extends React.Component {
         this.setState({
           animationState: this.state.animationState.concat(' concealDemoStage4')
         })
-    }, 1300)
+    }, 1100)
     setTimeout(() => {
         this.setState({
           animationState: ''
         })
-    }, 1500)
+    }, 1200)
   }
 
   updateCurrentSlide(index) {
@@ -110,14 +112,14 @@ class Header extends React.Component {
           </div>
           <nav>
               <ul>
-                  <li><a href="javascript:;" onClick={() => {if(!this.props.isDemoVisible) {this.props.updateDemoState(true); this.revealDemoAnimationSequence()}}}>Demo</a></li>
+                  <li><a href="javascript:;" onClick={() => {if(!this.props.isDemoVisible) {this.revealDemoAnimationSequence()}}}>Demo</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('purchase')}}>Purchase</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('about')}}>About</a></li>
                   <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('contact')}}>Contact</a></li>
               </ul>
           </nav>
           <div className={`cornerLogo ${this.props.isDemoVisible ? 'demoVisible' : ''} ${this.props.paintingIntro}`}>
-            <a href="javascript:;" onClick={() => {this.concealDemoAnimationSequence(); this.props.updateDemoState(false)}}>
+            <a href="javascript:;" onClick={() => {this.concealDemoAnimationSequence()}}>
               <SpinningRectangles />
               <h2 className="title">The Mulchmate</h2>
             </a>

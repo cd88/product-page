@@ -89,8 +89,7 @@
 			opacity:1;
 			&:after {
 				@include vendor('transition', (
-				'height #{_duration(article)} ease-in-out',
-				'top #{_duration(slower)} ease'
+				'height #{_duration(article)} ease-out'
 				));
 				content: '';
 				display: block;
@@ -104,15 +103,12 @@
 
 			&.revealDemoStage1 {
 				&:after {
-					height:2.5rem;
+					height: 0;
 				}
 			}
 			&.revealDemoStage2 {
-				opacity:0;
-				position:absolute;
-				&:after {
-					height:0;
-				}
+				opacity: 0;
+				position: absolute;
 			}
 			&.revealDemoStage3 {
 				display: none;
@@ -120,7 +116,7 @@
 
 			&.concealDemoStage1{
 				@include vendor('transition', ('opacity #{_duration(slower)}'))
-				position:absolute;
+				position: absolute;
 				display: none;
 				opacity: 0;
 				&:after {
@@ -150,7 +146,7 @@
 				border-radius: 100%;
 
 				&.revealDemoStage1 {
-					@include vendor('animation', 'spinX .75s linear infinite');
+					@include vendor('animation', 'spinX .6s linear infinite');
 				}
 				&.revealDemoStage2 {
 					opacity:0;
@@ -169,7 +165,7 @@
 				}
 
 				&.concealDemoStage3{
-					@include vendor('animation', 'spinX .75s linear 4');
+					@include vendor('animation', 'spinX .6s linear 4');
 					opacity: 1;
 				}
 				.icon {
@@ -193,13 +189,15 @@
 			}
 			&.revealDemoStage2 {
 				margin-top: 2rem;
-
 			}
 			&.concealDemoStage1 {
+				@include vendor('transition', (
+				'margin .35s ease-in-out'
+				));
+				margin-top: 2rem;
 			}
-			&.concealDemoStage3 {
+			&.concealDemoStage2 {
 				margin-top: 3.5rem;
-
 			}
 			&.concealDemoStage4 {
 
@@ -457,4 +455,3 @@
 	}
 
 @keyframes spinX { 100% { -webkit-transform: rotate3d(0, 1, 0, 360deg); transform: rotate3d(0, 1, 0, 360deg); } }
-@keyframes antiSpinX { 100% { -webkit-transform: rotate3d(0, -1, 0, 360deg); transform: rotate3d(0, -1, 0, 360deg); } }
