@@ -1,0 +1,55 @@
+
+/* Product Form */
+
+.product-form {
+	width: 276px;
+	margin: 0 auto;
+	padding: 15px;
+	display: block;
+	border-radius: _size(border-radius);
+	overflow: hidden;
+	border: 0;
+  background-color: #F2F2F5;
+	position: relative;
+
+	* { color: darkgray; }
+
+	.display {
+		display: block;
+		border: 0;
+		position: relative;
+		margin:-15px;
+		border-radius: none;
+
+
+		img {
+			display: block;
+		}
+	}
+	.name {
+		border-bottom: solid _size(border-width) darkgray;
+		width: -moz-max-content;
+		width: -webkit-max-content;
+		width: -ms-max-content;
+		width: max-content;
+		margin: 20px 0 (_size(element-margin) * .5) 0;
+	}
+	.description {
+		line-height: 1.2rem;
+	}
+	.size {
+
+	}
+}
+
+@include breakpoint(small) {
+	&.main {
+		margin: (_size(element-margin) * 1) 0;
+	}
+}
+
+@include breakpoint(xsmall) {
+	&.main {
+		margin: (_size(element-margin) * 0.75) 0;
+	}
+}

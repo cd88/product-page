@@ -5,9 +5,49 @@ import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
 
+import ProductPurchaseForm from './ProductPurchaseForm'
+
+function PurchasePageContent(props) {
+  let status = props.transactionStatus;
+  switch(status) {
+    case 'success':
+      return <SuccessPage />;
+      break;
+    case 'error':
+      let failedTransactions = props.failedTransactions++
+      props.updateFailedTransactions(failedTransactions)
+      if (failedTransactions >= 3) {
+        return <ErrorPage />;
+        break;
+      } else {
+        props.updateTransactionStatus('retry')
+      }
+    default:
+      return <ProductPurchaseForm
+              updateTransactionStatus={props.transactionStatus}
+              />;
+  }
+}
 
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      transactionStatus: 'clean',
+      failedTransactions: 0
+    }
+    this.updateTransactionStatus = this.updateTransactionStatus.bind(this);
+
+  }
+
+
+  updateTransactionStatus(results) {
+    this.setState({
+      transactionStatus: results
+    })
+  }
+
 
   render() {
 
@@ -19,17 +59,17 @@ class Main extends React.Component {
     return (
       <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="purchase" className={`${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
-          <h2 className="major">Work</h2>
-          <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic02.jpg"} alt="" /></span>
-          <p>Adipiscing magna sed dolor elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices.</p>
-          <p>Nullam et orci eu lorem consequat tincidunt vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus pharetra. Pellentesque condimentum sem. In efficitur ligula tate urna. Maecenas laoreet massa vel lacinia pellentesque lorem ipsum dolor. Nullam et orci eu lorem consequat tincidunt. Vivamus et sagittis libero. Mauris aliquet magna magna sed nunc rhoncus amet feugiat tempus.</p>
+
           {close}
+          <PurchasePageContent
+            updateTransactionStatus={this.updateTransactionStatus}
+            transactionStatus={this.state.transactionStatus}/>
         </article>
 
         <article id="about" className={`${this.props.article === 'about' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">About</h2>
           <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/pic03.jpg"} alt="" /></span>
-          <p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+          <p>Paulson Industries text copied to here</p>
           {close}
         </article>
 

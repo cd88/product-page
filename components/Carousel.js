@@ -84,7 +84,7 @@ class Carousel extends React.Component {
         <div className='carousel-card-inner'>
           <div className='carousel-title'>{item.title}</div>
           <div className='carousel-text'>{item.text}</div>
-          <img draggable="false" src={process.env.BACKEND_URL + item.imageUrl}/>
+          <img draggable="false" src={process.env.BACKEND_URL + '/' + item.imageUrl}/>
         </div>
       </div>
     )
@@ -92,7 +92,7 @@ class Carousel extends React.Component {
   handlePaginationClick(index) {
     this.props.updateCurrentSlide(index)
     this.touchCarousel.go(0-index)
-    console.log(targetCursor)
+    console.log(index)
   }
   render () {
     return (
