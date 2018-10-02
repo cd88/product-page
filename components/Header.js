@@ -31,12 +31,12 @@ class Header extends React.Component {
         this.setState({
           animationState: this.state.animationState.concat(' revealDemoStage3')
         })
-    }, 1000)
+    }, 750)
     setTimeout(() => {
         this.setState({
           animationState: this.state.animationState.concat(' revealDemoStage4')
         })
-    }, 1500)
+    }, 1150)
   }
 
   concealDemoAnimationSequence(){

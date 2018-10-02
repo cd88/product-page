@@ -182,7 +182,7 @@
 
 		.content {
 			@include vendor('transition', (
-			'margin 1.6s ease-in-out'
+			'margin .2s ease-in-out'
 			));
 			border-style: solid;
 			border-color: _palette(border);
@@ -190,15 +190,15 @@
 			border-bottom-width: _size(border-width);
 			max-width: 100%;
 			&.revealDemoStage1 {
-				margin-top: 2rem;
 			}
 			&.revealDemoStage2 {
+				margin-top: 2rem;
 
 			}
 			&.concealDemoStage1 {
-				margin-top: 3.5rem;
 			}
 			&.concealDemoStage3 {
+				margin-top: 3.5rem;
 
 			}
 			&.concealDemoStage4 {

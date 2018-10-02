@@ -49,7 +49,9 @@ function CarouselContainer (props) {
     current += carouselSlideData.length
   }
   // Put current card at center
-  const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
+  // const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
+  const translateX = (cursor * cardSize)
+  console.log('cursor', cursor, 'cardPadCount', cardPadCount, 'cardSize', cardSize, 'carouselWidth', carouselWidth)
   return (
 
     <NonPassiveTouchTarget
