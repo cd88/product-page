@@ -42,7 +42,7 @@ module.exports = {
           },
         },
         // 'process.env.ASSET_PREFIX': JSON.stringify(prefix),
-      }),
+      })
     )
     return config
   },

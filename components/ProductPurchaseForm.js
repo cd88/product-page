@@ -6,6 +6,7 @@ import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 
 import NumberPicker from './NumberPicker'
+import StripeCheckout from './StripeCheckout'
 
 // export {
 //   clamp: somethingTheyalreadyCreated
@@ -78,16 +79,7 @@ class ProductPurchaseForm extends React.Component {
           placeholder="Quantity"
           min={1}
           max={20}/>*/}
-        <script
-          src="https://checkout.stripe.com/checkout.js" className="stripe-button"
-          data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
-          data-amount="999"
-          data-name="Stripe.com"
-          data-description="Example charge"
-          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-          data-locale="auto"
-          data-zip-code="true">
-        </script>
+        <StripeCheckout />
       </form>
     )
   }

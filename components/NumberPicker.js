@@ -15,7 +15,7 @@ import faMinus from '@fortawesome/react-fontawesome'
 class NumberPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: '1'};
+    this.state = {value: 1};
 
     this.handleChange = this.handleChange.bind(this);
   }
@@ -23,7 +23,7 @@ class NumberPicker extends React.Component {
   handleChange(event) {
       let val = this.state.value
       /* 1-20, 25, 30, 35, 40 */
-      let newVal = event.target.value <= 0 ? 1
+      let newVal = event.target.value < 1 ? 1
         : event.target.value > 20 && event.target.value < 25 ?
             val === 20 ? 25 : 20
         : event.target.value > 25 && event.target.value < 30 ?
@@ -33,9 +33,9 @@ class NumberPicker extends React.Component {
         : event.target.value > 35 && event.target.value < 40 ?
             val === 35 ? 40 : 35
         : event.target.value > 40 ? (()=>{ alert('they want more than 40'); return 40})()
-        : event.target.value
+        : Math.floor(event.target.value)
       this.setState({value: newVal});
-      this.props.updatePurchaseQuantity(val);
+      this.props.updatePurchaseQuantity(newVal);
     }
 
   render () {
