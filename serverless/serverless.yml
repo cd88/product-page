@@ -19,3 +19,5 @@ functions:
       - http:
           path: products
           method: get
+    environment:
+      STRIPE_ACCESS_TOKEN: ${ssm:stripeToken}
