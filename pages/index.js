@@ -67,6 +67,7 @@ class IndexPage extends React.Component {
     }
 
     handleCloseArticle() {
+      if(this.state.isArticleVisible) {
         this.setState({
             articleTimeout: !this.state.articleTimeout
         })
@@ -83,6 +84,7 @@ class IndexPage extends React.Component {
                 article: ""
             })
         }, 350)
+      }
     }
     render() {
         return (
@@ -95,7 +97,7 @@ class IndexPage extends React.Component {
 
                     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
-                    <div id="wrapper">
+                    <div id="wrapper" onClick={this.handleCloseArticle}>
                         <Header
                             onOpenArticle={this.handleOpenArticle}
                             updateDemoState={this.updateDemoState}

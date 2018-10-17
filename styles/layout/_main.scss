@@ -45,6 +45,12 @@
 				display: block !important;
 			}
 
+			&.purchase {
+				padding:0;
+				background-color: transparent;
+				width:25rem;
+			}
+
 			.close {
 				display: block;
 				position: absolute;
