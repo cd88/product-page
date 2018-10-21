@@ -48,6 +48,11 @@ class Main extends React.Component {
     })
   }
 
+  handleClick = e => {
+    e.stopPropagation();
+    e.nativeEvent.stopImmediatePropagation();
+  }
+
 
   render() {
 
@@ -57,7 +62,7 @@ class Main extends React.Component {
     // {JSON.stringify(process.env)}
 
     return (
-      <div id="main" style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
+      <div id="main" onClick={this.handleClick} style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
         <article id="purchase" className={`purchase ${this.props.article === 'purchase' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
 
           {close}

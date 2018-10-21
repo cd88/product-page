@@ -32,7 +32,7 @@ class NumberPicker extends React.Component {
             val === 30 ? 35 : 30
         : event.target.value > 35 && event.target.value < 40 ?
             val === 35 ? 40 : 35
-        : event.target.value > 40 ? (()=>{ alert('they want more than 40'); return 40})()
+        : event.target.value > 40 ? (()=>{ alert('Please use the contact form to inquire about vendor rates'); return 40})()
         : Math.floor(event.target.value)
       this.setState({value: newVal});
       this.props.updatePurchaseQuantity(newVal);
