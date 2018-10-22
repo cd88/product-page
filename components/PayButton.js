@@ -42,10 +42,17 @@ class PayButton extends React.Component {
     return (
       <StripeCheckout
         name="Paulson Industries"
+        description="The Mulchmate"
+        image="bg.png"
+        ComponentClass="div"
+        paneLabel="give dollars"
         token={this.onToken}
         amount={this.props.amount}
         currency={config.stripe.currency}
         stripeKey={config.stripe.apiKey} // Stripe publishable API Key
+        shippingAddress
+        billingAddress
+        zipCode
         allowRememberMe={false}
       />
     );
@@ -53,30 +60,18 @@ class PayButton extends React.Component {
 }
 
 PayButton.propTypes = {
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.number.isRequired
 };
 
 export default PayButton;
 
-
-  render () {
-    return (
-      <script
-        src="https://checkout.stripe.com/checkout.js" className="stripe-button"
-        data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
-        data-amount="999"
-        data-name="Stripe.com"
-        data-description="Example charge"
-        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-        data-locale="auto"
-        data-zip-code="true">
-      </script>
-    )
-  }
-}
-
-StripeCheckout.propTypes = {
-  processTransaction: PropTypes.func
-}
-
-export default StripeCheckout
+      // <script
+      //   src="https://checkout.stripe.com/checkout.js" className="stripe-button"
+      //   data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
+      //   data-amount="999"
+      //   data-name="Stripe.com"
+      //   data-description="Example charge"
+      //   data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      //   data-locale="auto"
+      //   data-zip-code="true">
+      // </script>

@@ -86,7 +86,7 @@ class ProductPurchaseForm extends React.Component {
           placeholder="Quantity"
           min={1}
           max={20}/>*/}
-        <PayButton amount={this.state.purchaseAmount} />
+        <PayButton amount={this.state.purchaseAmount * 100} />
       </form>
     )
   }
