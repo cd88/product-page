@@ -29,6 +29,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-stripe-checkout": "^2.6.3",
     "react-touch-carousel": "^0.8.3",
     "sass-loader": "^6.0.6"
   },
