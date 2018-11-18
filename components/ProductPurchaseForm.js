@@ -6,7 +6,9 @@ import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 
 import NumberPicker from './NumberPicker'
-import StripeCheckout from './StripeCheckout'
+
+import PayButton from './PayButton'
+// import StripeCheckout from './StripeCheckout'
 
 // export {
 //   clamp: somethingTheyalreadyCreated
@@ -67,7 +69,7 @@ class ProductPurchaseForm extends React.Component {
 
   render () {
     return (
-      <form className="product-form">
+      <div className="product-form">
         <span className="display">
           <img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"}
             alt="The Mulchmate holds a yard waste paper bag open and upright" />
@@ -87,7 +89,7 @@ class ProductPurchaseForm extends React.Component {
           min={1}
           max={20}/>*/}
         <PayButton amount={this.state.purchaseAmount * 100} />
-      </form>
+      </div>
     )
   }
 }

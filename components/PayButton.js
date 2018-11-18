@@ -12,7 +12,7 @@ import StripeCheckout from 'react-stripe-checkout';
 // export default TouchCarousel
 // export touchWithMouseHOC
 
-import config from 'static/config';
+import config from '../static/config';
 
 class PayButton extends React.Component {
   constructor(props) {
@@ -21,6 +21,7 @@ class PayButton extends React.Component {
   }
 
   async onToken(token) { // On a successful tokenization request,
+    debugger;
     const res = await fetch(config.stripe.apiUrl, { // POST to our backend server with the token and charge details
       method: 'POST',
       body: JSON.stringify({
@@ -40,6 +41,7 @@ class PayButton extends React.Component {
     console.log(this.props.amount)
 
     return (
+      <div>
       <StripeCheckout
         name="Paulson Industries"
         description="The Mulchmate"
@@ -55,6 +57,7 @@ class PayButton extends React.Component {
         zipCode
         allowRememberMe={false}
       />
+      </div>
     );
   }
 }
