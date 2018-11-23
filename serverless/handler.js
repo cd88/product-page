@@ -7,7 +7,6 @@ module.exports.hello = async (event, context) => {
       message: 'Go Serverless v1.0! Your function executed successfully!'
     })
   };
-
 };
 
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);

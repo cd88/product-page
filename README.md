@@ -29,4 +29,7 @@ npm run dev
 ```
 # Build and export the site, the static files are generated in the out/ folder
 npm run export
+
+# Github gh-pages export (with required asset prefix) into a subtree named 'gh-pages'
+npm run gh-export
 ```

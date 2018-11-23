@@ -1,8 +1,8 @@
 const path = require('path')
 const glob = require('glob')
 const webpack = require('webpack');
-const prefix = process.env.NODE_ENV === 'production' ? '/product-page' : '/';
-const prod = process.env.NODE_ENV === 'production';
+const prefix = process.env.NODE_ENV === 'gh-pages' ? '/product-page' : '/';
+const gh = process.env.NODE_ENV === 'gh-pages';
 
 module.exports = {
   assetPrefix: prefix,
@@ -38,7 +38,7 @@ module.exports = {
       new webpack.DefinePlugin({
         process: {
           env: {
-            BACKEND_URL: JSON.stringify(prod ? 'https://celloworld.github.io/product-page' : ''),
+            BACKEND_URL: JSON.stringify(gh ? 'https://celloworld.github.io/product-page' : ''),
           },
         },
         // 'process.env.ASSET_PREFIX': JSON.stringify(prefix),
