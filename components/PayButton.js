@@ -12,23 +12,24 @@ import StripeCheckout from 'react-stripe-checkout';
 // export default TouchCarousel
 // export touchWithMouseHOC
 
-import config from '../static/config';
+import foo from '../static/config';
+const checkoutUrl = 'https://tou03qbxk5.execute-api.us-east-1.amazonaws.com/dev'
 
 class PayButton extends React.Component {
   constructor(props) {
     super(props);
-    this.onToken = this.onToken.bind(this);
   }
 
-  async onToken(token) { // On a successful tokenization request,
+  onToken = async (token) => {
+  // async onToken(token) { // On a successful tokenization request,
     debugger;
-    const res = await fetch(config.stripe.apiUrl, { // POST to our backend server with the token and charge details
+    const res = await fetch(checkoutUrl, { // POST to our backend server with the token and charge details
       method: 'POST',
       body: JSON.stringify({
         token,
         charge: {
           amount: this.props.amount,
-          currency: config.stripe.currency,
+          currency: foo.stripe.currency,
         },
       }),
     });
@@ -45,13 +46,13 @@ class PayButton extends React.Component {
       <StripeCheckout
         name="Paulson Industries"
         description="The Mulchmate"
-        image="bg.png"
+        _image="bg.png"
         ComponentClass="div"
-        paneLabel="give dollars"
+        paneLabel="trade monies"
         token={this.onToken}
         amount={this.props.amount}
-        currency={config.stripe.currency}
-        stripeKey={config.stripe.apiKey} // Stripe publishable API Key
+        currency={foo.stripe.currency}
+        stripeKey={foo.stripe.publicApiTestKey} // Stripe publishable API Key
         shippingAddress
         billingAddress
         zipCode

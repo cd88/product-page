@@ -7,3 +7,6 @@ design/
 .next
 
 out/
+/out
+/static/config.js
+static/config.js

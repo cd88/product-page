@@ -1,11 +1,13 @@
 # For full config options, check the docs:    docs.serverless.com
 
 service: lambdaNodejs
+app: mlch
+tenant: celloworld
 provider:
   name: aws
   runtime: nodejs8.10
 stage: dev
-region: us-west-1
+region: us-east-1
 functions:
   hello:
     handler: handler.hello
@@ -13,11 +15,11 @@ functions:
      - http:
          path: /
          method: get
-  getProductData:
-    handler: handler.getProductData
-    events:
-      - http:
-          path: products
-          method: get
-    environment:
-      STRIPE_ACCESS_TOKEN: ${ssm:stripeToken}
+  # getProductData:
+  #   handler: handler.getProductData
+  #   events:
+  #     - http:
+  #         path: products
+  #         method: get
+  #   environment:
+  #     STRIPE_ACCESS_TOKEN: ${ssm:stripeTestToken}
