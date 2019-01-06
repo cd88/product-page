@@ -1,9 +1,9 @@
-const prod = process.env.NODE_ENV === 'production';
+const gh = process.env.NODE_ENV === 'gh-pages';
 
 module.exports = {
   process: {
     env: {
-      BACKEND_URL: prod ? 'https://celloworld.github.io/product-page' : '',
+      BACKEND_URL: gh ? 'https://celloworld.github.io/product-page' : ''
     },
   },
 }

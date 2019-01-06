@@ -1,14 +1,14 @@
-# nextjs-starter-dimension
-A Next.js React SPA for marketing a single product
+# ReactJS / Next single-page static cloudstore.
+AWS Lambda/S3/EC2, Serverless, Stripe Checkout
+
 *Based on the Dimension site template designed by [HTML5 UP](https://html5up.net/dimension).*
 
 ## Preview
 
 https://celloworld.github.io/product-page/
 
-## Getting Started
-
-To get started, simply clone the repository and run `npm install`
+## Use this as a template
+*In order to use Stripe Checkout you will need a stripe developer account, an aws account for lambda and ec2, and you will want a serverless account to deploy your function to lambda using the serverless cli*
 
 ```
 # Clone the repo
@@ -24,9 +24,25 @@ npm install
 npm run dev
 ```
 
+
 ## Generating the Static Site
 
 ```
 # Build and export the site, the static files are generated in the out/ folder
 npm run export
 ```
+
+## Start using Serverless.js
+
+Follow the steps in the getting started link below
+https://serverless.com/framework/docs/getting-started/
+
+## Set up AWS service
+
+Lambda, Cloudwatch
+
+## Secrets Management with AWS
+Push your stripe secret Test key to aws-serverless
+`aws ssm put-parameter --name stripeSecretTestKey --type String --value <your stripe secret key here>`
+
+*Thank you to Patrick Michelberger for his [tutorial on medium](https://medium.com/@patrickmichelberger/building-a-serverless-e-commerce-app-with-aws-lambda-stripe-and-react-4663e241710b) and demo [serverless-shop repo](https://github.com/patrick-michelberger/serverless-shop)

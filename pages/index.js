@@ -67,6 +67,7 @@ class IndexPage extends React.Component {
     }
 
     handleCloseArticle() {
+      if(this.state.isArticleVisible) {
         this.setState({
             articleTimeout: !this.state.articleTimeout
         })
@@ -83,6 +84,7 @@ class IndexPage extends React.Component {
                 article: ""
             })
         }, 350)
+      }
     }
     render() {
         return (
@@ -91,11 +93,12 @@ class IndexPage extends React.Component {
                     <Head>
                         <title>The Mulchmate - Paulson Industries</title>
                         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,600,600i" rel="stylesheet" />
+                        <script src="https://js.stripe.com/v3/"></script>
                     </Head>
 
                     <style dangerouslySetInnerHTML={{ __html: stylesheet }} />
 
-                    <div id="wrapper">
+                    <div id="wrapper" onClick={this.handleCloseArticle}>
                         <Header
                             onOpenArticle={this.handleOpenArticle}
                             updateDemoState={this.updateDemoState}

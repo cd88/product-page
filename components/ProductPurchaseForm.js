@@ -6,7 +6,9 @@ import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 
 import NumberPicker from './NumberPicker'
-import StripeCheckout from './StripeCheckout'
+
+import PayButton from './PayButton'
+// import StripeCheckout from './StripeCheckout'
 
 // export {
 //   clamp: somethingTheyalreadyCreated
@@ -20,12 +22,20 @@ const productInfo = {
   description: "This is the description of The Mulchmate, reiterate the value proposition here",
   dimensions: "22 x 14 in."
 }
+const priceLabelStyle = {
+  display: 'inline-block',
+  marginRight: '8px'
+}
+const priceStyle = {
+  display: 'inline-block'
+}
 
 class ProductPurchaseForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      purchaseQuantity: 1
+      purchaseQuantity: 1,
+      purchaseAmount: 8
     }
     this.updatePurchaseQuantity = this.updatePurchaseQuantity.bind(this)
   }
@@ -46,21 +56,20 @@ class ProductPurchaseForm extends React.Component {
     })
   }
   updateTotal(int) {
-    switch(int) {
-      case (int <= 4):
-        break;
-      case (int <= 9):
-        break;
-      default:
-        break;
-    }
+    // TODO: redux, also pass product id
+    // let bulkDiscount = int >= 10 ? .75 : int >= 3 ? .875 : 1
+    let bulkDiscount = 1
+    let unitPrice = 8
     this.setState({
-      purchaseQuantity: int
+      purchaseAmount: int * unitPrice * bulkDiscount
     })
   }
+
+
+
   render () {
     return (
-      <form className="product-form">
+      <div className="product-form">
         <span className="display">
           <img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"}
             alt="The Mulchmate holds a yard waste paper bag open and upright" />
@@ -69,18 +78,12 @@ class ProductPurchaseForm extends React.Component {
         <h4 className="description">{productInfo.description}</h4>
         <h6 className="size">dimensions: {productInfo.dimensions}</h6>
 
-        <NumberPicker updatePurchaseQuantity={this.updatePurchaseQuantity}/>
-
-        {/*<Form.Field control={NumberPicker}
-          name={"multipleOfThree"}
-          value={this.getValue("multipleOfThree")}
-          onChange={this.updateNumberPicker}
-          label="quantity"
-          placeholder="Quantity"
-          min={1}
-          max={20}/>*/}
-        <StripeCheckout />
-      </form>
+        <NumberPicker
+          value={this.state.purchaseQuantity}
+          updatePurchaseQuantity={this.updatePurchaseQuantity}/>
+        <h4 style={priceLabelStyle}>Price:</h4><h2 style={priceLabelStyle}>${this.state.purchaseAmount}</h2>
+        <PayButton amount={this.state.purchaseAmount * 100} />
+      </div>
     )
   }
 }
