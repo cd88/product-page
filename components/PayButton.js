@@ -33,7 +33,7 @@ class PayButton extends React.Component {
     }
   },
   */
-  onToken = async (token) => {
+  onToken = async (token, args) => {
   // async onToken(token) { // On a successful tokenization request,
     debugger;
     const res = await fetch(checkoutUrl, { // POST to our backend server with the token and charge details
@@ -45,13 +45,14 @@ class PayButton extends React.Component {
           currency: "USD",
           skus: ["prod_DiT3Hrr3Qw8QMV"],
           shipping: {
-            name: firstName + " " + lastName,
+            name: args.shipping_name,
             address: {
-              line1: street + " " + streetNumber,
-              line2: line2 ? line2 : null
-              city: city,
-              state: state,
-              postal_code: zipcode
+              line1: args.shipping_address_line1,
+              line2: args.shipping_address_line2 ? args.shipping_address_line2: null,
+              city: args.shipping_address_city,
+              state: args.shipping_address_state ? args.shipping_address_state : null,
+              country: args.shipping_address_country_code,
+              postal_code: args.shipping_address_zip
             }
           }
         },

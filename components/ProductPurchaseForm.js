@@ -82,14 +82,6 @@ class ProductPurchaseForm extends React.Component {
           value={this.state.purchaseQuantity}
           updatePurchaseQuantity={this.updatePurchaseQuantity}/>
         <h4 style={priceLabelStyle}>Price:</h4><h2 style={priceLabelStyle}>${this.state.purchaseAmount}</h2>
-        {/*<Form.Field control={NumberPicker}
-          name={"multipleOfThree"}
-          value={this.getValue("multipleOfThree")}
-          onChange={this.updateNumberPicker}
-          label="quantity"
-          placeholder="Quantity"
-          min={1}
-          max={20}/>*/}
         <PayButton amount={this.state.purchaseAmount * 100} />
       </div>
     )
