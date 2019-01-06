@@ -7,4 +7,4 @@ design/
 .next
 
 out/
-static/config.js
+static/stripe-config.js
