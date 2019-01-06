@@ -1,10 +1,10 @@
-import fetch from 'isomorphic-unfetch';
 import React from 'react'
+import fetch from 'isomorphic-unfetch'
 import PropTypes from 'prop-types'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
-import StripeCheckout from 'react-stripe-checkout';
+import StripeCheckout from 'react-stripe-checkout'
 
 // export {
 //   clamp: somethingTheyalreadyCreated
@@ -12,14 +12,27 @@ import StripeCheckout from 'react-stripe-checkout';
 // export default TouchCarousel
 // export touchWithMouseHOC
 
-import foo from '../static/config';
-const checkoutUrl = 'https://tou03qbxk5.execute-api.us-east-1.amazonaws.com/dev'
+import foo from '../static/stripe-config.js'
+
+const checkoutUrl = 'https://tou03qbxk5.execute-api.us-east-1.amazonaws.com/dev/createCharge'
 
 class PayButton extends React.Component {
   constructor(props) {
     super(props);
   }
-
+  /*
+  "shipping": {
+    "name": "Fake Name",
+    "address": {
+      "city": "Los Angeles",
+      "country": "US",
+      "line1": "123 Street Lane",
+      "line2":null,
+      "postal_code": "90001",
+      "state": "CA"
+    }
+  },
+  */
   onToken = async (token) => {
   // async onToken(token) { // On a successful tokenization request,
     debugger;
@@ -27,9 +40,20 @@ class PayButton extends React.Component {
       method: 'POST',
       body: JSON.stringify({
         token,
-        charge: {
+        order: {
           amount: this.props.amount,
-          currency: foo.stripe.currency,
+          currency: "USD",
+          skus: ["prod_DiT3Hrr3Qw8QMV"],
+          shipping: {
+            name: firstName + " " + lastName,
+            address: {
+              line1: street + " " + streetNumber,
+              line2: line2 ? line2 : null
+              city: city,
+              state: state,
+              postal_code: zipcode
+            }
+          }
         },
       }),
     });
@@ -42,13 +66,12 @@ class PayButton extends React.Component {
     console.log(this.props.amount)
 
     return (
-      <div>
       <StripeCheckout
         name="Paulson Industries"
         description="The Mulchmate"
         _image="bg.png"
         ComponentClass="div"
-        paneLabel="trade monies"
+        paneLabel="Buy The Mulchmate"
         token={this.onToken}
         amount={this.props.amount}
         currency={foo.stripe.currency}
@@ -56,9 +79,8 @@ class PayButton extends React.Component {
         shippingAddress
         billingAddress
         zipCode
-        allowRememberMe={false}
+        allowRememberMe={true}
       />
-      </div>
     );
   }
 }
@@ -68,14 +90,3 @@ PayButton.propTypes = {
 };
 
 export default PayButton;
-
-      // <script
-      //   src="https://checkout.stripe.com/checkout.js" className="stripe-button"
-      //   data-key="pk_test_9ByY3GWai1HHnzu0K9lx1Awc"
-      //   data-amount="999"
-      //   data-name="Stripe.com"
-      //   data-description="Example charge"
-      //   data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-      //   data-locale="auto"
-      //   data-zip-code="true">
-      // </script>

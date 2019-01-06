@@ -78,7 +78,9 @@ class ProductPurchaseForm extends React.Component {
         <h4 className="description">{productInfo.description}</h4>
         <h6 className="size">dimensions: {productInfo.dimensions}</h6>
 
-        <NumberPicker updatePurchaseQuantity={this.updatePurchaseQuantity}/>
+        <NumberPicker
+          value={this.state.purchaseQuantity}
+          updatePurchaseQuantity={this.updatePurchaseQuantity}/>
         <h4 style={priceLabelStyle}>Price:</h4><h2 style={priceLabelStyle}>${this.state.purchaseAmount}</h2>
         {/*<Form.Field control={NumberPicker}
           name={"multipleOfThree"}
