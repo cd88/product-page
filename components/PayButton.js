@@ -12,9 +12,8 @@ import StripeCheckout from 'react-stripe-checkout'
 // export default TouchCarousel
 // export touchWithMouseHOC
 
-import foo from '../static/stripe-config.js'
-
-const checkoutUrl = 'https://tou03qbxk5.execute-api.us-east-1.amazonaws.com/dev/createCharge'
+import stripeConfig from '../static/stripe-config.js'
+console.log(stripeConfig);
 
 class PayButton extends React.Component {
   constructor(props) {
@@ -36,21 +35,19 @@ class PayButton extends React.Component {
   onToken = async (token, args) => {
   // async onToken(token) { // On a successful tokenization request,
     debugger;
-    const res = await fetch(checkoutUrl, { // POST to our backend server with the token and charge details
+    const res = await fetch(stripeConfig.checkoutUrl, { // POST to our backend server with the token and charge details
       method: 'POST',
       body: JSON.stringify({
         token,
         order: {
           amount: this.props.amount,
           currency: "USD",
-          skus: ["prod_DiT3Hrr3Qw8QMV"],
+          skus: [stripeConfig.productSKU],
           shipping: {
             name: args.shipping_name,
             address: {
               line1: args.shipping_address_line1,
-              line2: args.shipping_address_line2 ? args.shipping_address_line2: null,
               city: args.shipping_address_city,
-              state: args.shipping_address_state ? args.shipping_address_state : null,
               country: args.shipping_address_country_code,
               postal_code: args.shipping_address_zip
             }
@@ -75,8 +72,8 @@ class PayButton extends React.Component {
         paneLabel="Buy The Mulchmate"
         token={this.onToken}
         amount={this.props.amount}
-        currency={foo.stripe.currency}
-        stripeKey={foo.stripe.publicApiTestKey} // Stripe publishable API Key
+        currency={stripeConfig.currency}
+        stripeKey={stripeConfig.publicApiTestKey} // Stripe publishable API Key
         shippingAddress
         billingAddress
         zipCode
