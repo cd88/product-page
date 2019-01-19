@@ -34,7 +34,6 @@ class PayButton extends React.Component {
   */
   onToken = async (token, args) => {
   // async onToken(token) { // On a successful tokenization request,
-    debugger;
     const res = await fetch(stripeConfig.checkoutUrl, { // POST to our backend server with the token and charge details
       method: 'POST',
       body: JSON.stringify({
@@ -53,7 +52,7 @@ class PayButton extends React.Component {
             }
           }
         },
-      }),
+      })
     });
     const data = await res.json();
     console.log('onToken');

@@ -8,3 +8,5 @@ design/
 
 out/
 static/stripe-config.js
+
+*.mov

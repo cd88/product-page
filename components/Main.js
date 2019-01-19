@@ -1,4 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
+import fetch from 'isomorphic-unfetch'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
@@ -32,6 +34,8 @@ function PurchasePageContent(props) {
 }
 
 
+
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -43,6 +47,34 @@ class Main extends React.Component {
 
   }
 
+  submitToAPI = () => {
+    debugger;
+    var userData = {
+      name : "name",
+      phone : "1231231231",
+      email : "camerondonahue@gmail.com",
+      desc : "example message"
+    };
+
+    fetch("https://tou03qbxk5.execute-api.us-east-1.amazonaws.com/dev/mailfwd", {
+      method: 'POST',
+      body: JSON.stringify({userData})
+    })
+    .then( res => res.json())
+    .then( data => console.log(data));
+
+
+      // success: function () {
+      //   // clear form and show a success message
+      //   alert("Successfull");
+      //   // document.getElementById("contact-form").reset();
+      //   // location.reload();
+      // },
+      // error: function () {
+      //   // show an error message
+      //   alert("UnSuccessfull");
+      // }
+  }
 
   updateTransactionStatus(results) {
     this.setState({
@@ -82,7 +114,7 @@ class Main extends React.Component {
 
         <article id="contact" className={`${this.props.article === 'contact' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Contact</h2>
-          <form method="post" action="#">
+          <div>
             <div className="field half first">
               <label htmlFor="name">Name</label>
               <input type="text" name="name" id="name" />
@@ -96,10 +128,10 @@ class Main extends React.Component {
               <textarea name="message" id="message" rows="4"></textarea>
             </div>
             <ul className="actions">
-              <li><input type="submit" value="Send Message" className="special" /></li>
+              <li><button className="special" onClick={this.submitToAPI}>Send Message</button></li>
               <li><input type="reset" value="Reset" /></li>
             </ul>
-          </form>
+          </div>
           <ul className="icons">
             <li><a href="#">
               <FontAwesomeIcon icon={faTwitter} />
@@ -110,7 +142,7 @@ class Main extends React.Component {
             <li><a href="#">
               <FontAwesomeIcon icon={faInstagram} />
             </a></li>
-            <li><a href="#">
+            <li><a href="https://github.com/celloworld">
               <FontAwesomeIcon icon={faGithub} />
             </a></li>
           </ul>
