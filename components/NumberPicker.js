@@ -4,11 +4,6 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 
-// export {
-//   clamp: somethingTheyalreadyCreated
-// }
-
-
 const numberPicker = (props) => {
     let handleChange = (event) => {
       let newVal = event.target.value < 1 ? 1

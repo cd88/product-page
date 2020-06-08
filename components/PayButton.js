@@ -6,14 +6,8 @@ import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 import StripeCheckout from 'react-stripe-checkout'
 
-// export {
-//   clamp: somethingTheyalreadyCreated
-// }
-// export default TouchCarousel
-// export touchWithMouseHOC
-
 import stripeConfig from '../static/stripe-config.js'
-console.log(stripeConfig);
+// console.log(stripeConfig);
 
 class PayButton extends React.Component {
   constructor(props) {
@@ -48,7 +42,7 @@ class PayButton extends React.Component {
   }
 
   render() {
-    console.log(this.props.amount)
+    // console.log(this.props.amount)
 
     return (
       <StripeCheckout

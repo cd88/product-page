@@ -8,14 +8,6 @@ import faMinus from '@fortawesome/react-fontawesome'
 import NumberPicker from './NumberPicker'
 
 import PayButton from './PayButton'
-// import StripeCheckout from './StripeCheckout'
-
-// export {
-//   clamp: somethingTheyalreadyCreated
-// }
-// export default TouchCarousel
-// export touchWithMouseHOC
-
 
 const productInfo = {
   name: "The Mulchmate",
@@ -38,10 +30,6 @@ class ProductPurchaseForm extends React.Component {
       purchaseAmount: 8
     }
     this.updatePurchaseQuantity = this.updatePurchaseQuantity.bind(this)
-  }
-
-  launchLambdaServer(data) {
-    console.log(data)
   }
 
   handleTransactionResults(results) {

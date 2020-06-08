@@ -5,12 +5,6 @@ import cx from 'classnames'
 import NonPassiveTouchTarget from './NonPassiveTouchTarget'
 import touchWithMouseHOC from 'react-touch-carousel/lib/touchWithMouseHOC'
 import TouchCarousel, {clamp} from 'react-touch-carousel'
-// export {
-//   clamp: somethingTheyalreadyCreated
-// }
-// export default TouchCarousel
-// export touchWithMouseHOC
-
 
 const carouselSlideData = [
   {
@@ -51,7 +45,7 @@ function CarouselContainer (props) {
   // Put current card at center
   // const translateX = (cursor - cardPadCount) * cardSize + (carouselWidth - cardSize) / 2
   const translateX = (cursor * cardSize)
-  console.log('cursor', cursor, 'cardPadCount', cardPadCount, 'cardSize', cardSize, 'carouselWidth', carouselWidth)
+  // console.log('cursor', cursor, 'cardPadCount', cardPadCount, 'cardSize', cardSize, 'carouselWidth', carouselWidth)
   return (
 
     <NonPassiveTouchTarget
