@@ -19,19 +19,6 @@ class PayButton extends React.Component {
   constructor(props) {
     super(props);
   }
-  /*
-  "shipping": {
-    "name": "Fake Name",
-    "address": {
-      "city": "Los Angeles",
-      "country": "US",
-      "line1": "123 Street Lane",
-      "line2":null,
-      "postal_code": "90001",
-      "state": "CA"
-    }
-  },
-  */
   onToken = async (token, args) => {
   // async onToken(token) { // On a successful tokenization request,
     debugger;
