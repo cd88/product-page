@@ -37,29 +37,31 @@ class PayButton extends React.Component {
       }),
     });
     const data = await res.json();
-    console.log('onToken');
-    console.log(data);
+    // console.log('onToken');
+    // console.log(data);
   }
 
   render() {
     // console.log(this.props.amount)
 
     return (
-      <StripeCheckout
-        name="Paulson Industries"
-        description="The Mulchmate"
-        _image="bg.png"
-        ComponentClass="div"
-        paneLabel="Buy The Mulchmate"
-        token={this.onToken}
-        amount={this.props.amount}
-        currency={stripeConfig.currency}
-        stripeKey={stripeConfig.publicApiTestKey} // Stripe publishable API Key
-        shippingAddress
-        billingAddress
-        zipCode
-        allowRememberMe={true}
-      />
+        <div className="stripe-btn">
+          <StripeCheckout
+            name="Paulson Industries"
+            description="The Mulchmate"
+            _image="bg.png"
+            ComponentClass="div"
+            paneLabel="Buy The Mulchmate"
+            token={this.onToken}
+            amount={this.props.amount}
+            currency={stripeConfig.currency}
+            stripeKey={stripeConfig.publicApiTestKey} // Stripe publishable API Key
+            shippingAddress
+            billingAddress
+            zipCode
+            allowRememberMe={true}
+          />
+        </div>
     );
   }
 }

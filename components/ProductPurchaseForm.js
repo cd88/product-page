@@ -11,15 +11,8 @@ import PayButton from './PayButton'
 
 const productInfo = {
   name: "The Mulchmate",
-  description: "This is the description of The Mulchmate, reiterate the value proposition here",
-  dimensions: "22 x 14 in."
-}
-const priceLabelStyle = {
-  display: 'inline-block',
-  marginRight: '8px'
-}
-const priceStyle = {
-  display: 'inline-block'
+  description: "The Mulchmate is engineered to fit all brands of yard waste bags and keeps them open as you're filling them, saving you time and skipping the headache.",
+  dimensions: "22 x 14 in.",
 }
 
 class ProductPurchaseForm extends React.Component {
@@ -62,14 +55,16 @@ class ProductPurchaseForm extends React.Component {
           <img src={process.env.BACKEND_URL + "/static/images/mulchmate-demo-slide-3.png"}
             alt="The Mulchmate holds a yard waste paper bag open and upright" />
         </span>
-        <h3 className="name">{productInfo.name}</h3>
+        <h2 className="name main">{productInfo.name}</h2>
         <h4 className="description">{productInfo.description}</h4>
-        <h6 className="size">dimensions: {productInfo.dimensions}</h6>
+        <h4 className="size centered-label">dimensions:</h4>
+        <h4 className="dimensions">{productInfo.dimensions}</h4>
 
         <NumberPicker
           value={this.state.purchaseQuantity}
           updatePurchaseQuantity={this.updatePurchaseQuantity}/>
-        <h4 style={priceLabelStyle}>Price:</h4><h2 style={priceLabelStyle}>${this.state.purchaseAmount}</h2>
+        <h3 className="price-label centered-label">Price:</h3>
+        <h2 className="price">${this.state.purchaseAmount}</h2>
         <PayButton amount={this.state.purchaseAmount * 100} />
       </div>
     )

@@ -5,7 +5,6 @@ import faGem from '@fortawesome/fontawesome-free-regular/faGem'
 import SpinningRectangles from './SpinningRectangles'
 import Carousel from './Carousel'
 
-
 class Header extends React.Component {
   constructor(props) {
     super(props)
@@ -89,8 +88,8 @@ class Header extends React.Component {
           </div>
           <div className={`content ${this.state.animationState}`}>
               <div className={`inner ${this.props.isDemoVisible ? 'collapsed' : ''} ${this.props.paintingIntro}`}>
-                  <h1>The Mulchmate</h1>
-                  <p>A reusable garden tool that keeps yard waste bags open while they&#39;re being filled</p>
+                  <h1 className='main-title'>The Mulchmate</h1>
+                  <p>A reusable garden tool that keeps yard waste bags open</p>
               </div>
               <div className={`demo ${this.props.isDemoVisible ? '' : 'collapsed'}`}>
                 <Carousel

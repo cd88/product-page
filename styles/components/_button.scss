@@ -78,3 +78,12 @@
 	button {
 		line-height: calc(#{_size(element-height)} - 2px);
 	}
+
+    .stripe-btn {
+      text-align: center;
+
+      button {
+        height: auto;
+        margin-bottom: 5px;
+      }
+    }

@@ -77,7 +77,7 @@
 		 	.title {
 				width: 220px;
 				font-size: 1.4rem;
-				margin: 16px 0 0 78px;
+				margin: 16px 0 30px 78px;
 				letter-spacing: .05rem + _font(letter-spacing);
 			}
 		}
@@ -175,7 +175,9 @@
 				}
 			}
 		}
-
+        .main-title {
+            margin-bottom: 30px;
+        }
 		.content {
 			@include vendor('transition', (
 			'margin .2s ease-in-out'

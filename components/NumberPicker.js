@@ -15,11 +15,38 @@ const numberPicker = (props) => {
         props.updatePurchaseQuantity(newVal);
       }
 
+  const quantityStyle = {
+    width: '45px',
+    fontSize: '18px',
+    paddingLeft: '5px',
+    marginLeft: '10px',
+    borderRadius: '5px',
+    border: '1px solid lightgrey',
+    backgroundColor: 'transparent',
+  }
+
+  const quantityLabelStyle = {
+    display: 'inline-block',
+    width: '50%',
+    textAlign: 'right',
+  }
+
+  const noMargin = {
+    margin: '0',
+  }
+
 
     return (
-      <label>
-        <h4 className="quantity">Quantity:</h4>
-        <input type="number"
+      <label style={noMargin}>
+        <h3
+          style={quantityLabelStyle}
+          className="quantity"
+        >
+          Quantity:
+        </h3>
+        <input
+          style={quantityStyle}
+          type="number"
           value={props.value}
           onChange={(event) => handleChange(event)}
         />

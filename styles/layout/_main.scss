@@ -46,10 +46,21 @@
 			}
 
 			&.purchase {
-				padding:0;
-				background-color: transparent;
-				width:25rem;
+				max-width: 30rem;
+                padding: 2.5rem 2.5rem 1.5rem 2.5rem;
 			}
+
+            .three-col {
+                display: flex;
+                justify-content: space-between;
+                padding: 5px;
+
+                img {
+                    max-width: 138px;
+                    margin-left: 5px;
+                    margin-right: 5px;
+                }
+            }
 
 			.close {
 				display: block;

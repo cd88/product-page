@@ -32,6 +32,36 @@ function PurchasePageContent(props) {
 }
 
 
+function threeSteps() {
+  const stepsObjs = [{
+      text: "Insert Mulchmate diagonally inside a completely opened lawn bag",
+      title: "Insert",
+      filename: "mulchmate-step-1.png",
+  },
+  {
+      text: "Lift & Guide the Mulchmate corners until snug against the bag corners",
+      title: "Balance",
+      filename: "mulchmate-step-2.png",
+  },
+  {
+      text: "Ready to Use! The bag will stand and remain open while you fill it",
+      title: "Fill",
+      filename: "mulchmate-step-3.png",
+  }];
+
+  const steps = stepsObjs.map((step) => {
+    const imgSrc = `${process.env.BACKEND_URL}/static/images/${step.filename}`
+    return
+    <div className="step-container">
+        <h4 className="major">{step.title}</h4>
+        <img src={imgSrc} alt="" key={step.title} className="no-bg-img"/>
+        <h6>{step.text}</h6>
+    </div>
+  });
+
+  return steps
+}
+
 class Main extends React.Component {
   constructor(props) {
     super(props)
@@ -39,10 +69,9 @@ class Main extends React.Component {
       transactionStatus: 'clean',
       failedTransactions: 0
     }
+
     this.updateTransactionStatus = this.updateTransactionStatus.bind(this);
-
   }
-
 
   updateTransactionStatus(results) {
     this.setState({
@@ -55,13 +84,8 @@ class Main extends React.Component {
     e.nativeEvent.stopImmediatePropagation();
   }
 
-
   render() {
-
     let close = <div className="close" onClick={() => {this.props.onCloseArticle()}}></div>
-
-    // .image:before { background-image: url({process.env.BACKEND_URL + '/static/images/overlay.png'}); }
-    // {JSON.stringify(process.env)}
 
     return (
       <div id="main" onClick={this.handleClick} style={this.props.timeout ? {display: 'flex'} : {display: 'none'}}>
@@ -78,7 +102,9 @@ class Main extends React.Component {
           <p>The Mulchmate is simply a rectangular piece of plastic engineered to fit in all brands of yard waste bags to keep them open as you need to fill them.</p>
           <p>How many times have you battled with a stupid paper bag just to get your fallen leaves, clipped grass, or small sticks dumped into it? Well, the Mulchmate cures all your yard bag problems!</p>
           <p>The Mulchmate sets up quickly, so why not use it? "How do you put it in the bag?", you may ask. No need to worry, it’s very easy:</p>
-          <span className="image main"><img src={process.env.BACKEND_URL + "/static/images/mulchmate3.jpg"} alt="" /></span>
+
+          <div className="image main three-col">{threeSteps()}</div>
+
           <p>From the pictures above, you can see how the Mulchmate fits into a yard waste bag. There is nothing difficult about it, there are no bolts or nuts to attach and it's very lightweight.</p>
           <p>The Mulchmate fits nice and snug into most commercial yard waste bags keeps them open and standing as advertised. Also, if the bag is laid down, clippings, leaves, and sticks can be raked into it. The Mulchmate makes the job of yard clean up so much quicker and easier!</p>
           <p>Fall is right around the corner and The Mulchmate makes a great gift.</p>
@@ -87,7 +113,8 @@ class Main extends React.Component {
 
         <article id="contact" className={`${this.props.article === 'contact' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Contact</h2>
-          <form method="post" action="#">
+          <form action="https://api.staticforms.xyz/submit" method="post">
+            <input type="hidden" name="accessKey" value="">
             <div className="field half first">
               <label htmlFor="name">Name</label>
               <input type="text" name="name" id="name" />
