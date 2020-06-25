@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
 import faTwitter from '@fortawesome/fontawesome-free-brands/faTwitter'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebook'
 import faInstagram from '@fortawesome/fontawesome-free-brands/faInstagram'
 import faGithub from '@fortawesome/fontawesome-free-brands/faGithub'
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types';
+import { useState } from 'react';
 
 import ProductPurchaseForm from './ProductPurchaseForm'
 
@@ -12,7 +13,7 @@ function PurchasePageContent(props) {
   switch(status) {
     case 'success':
       // return <SuccessPage />;
-      return <div><h1>Order succeeded, check your email</h1></div>;
+      return <div><h1>Order succeeded, you will receive email confirmation directly from Stripe. Thank you!</h1></div>;
       break;
     case 'error':
       let failedTransactions = props.failedTransactions++
@@ -114,7 +115,7 @@ class Main extends React.Component {
         <article id="contact" className={`${this.props.article === 'contact' ? 'active' : ''} ${this.props.articleTimeout ? 'timeout' : ''}`} style={{display:'none'}}>
           <h2 className="major">Contact</h2>
           <form action="https://api.staticforms.xyz/submit" method="post">
-            <input type="hidden" name="accessKey" value="">
+            <input type="hidden" name="accessKey" value="" />
             <div className="field half first">
               <label htmlFor="name">Name</label>
               <input type="text" name="name" id="name" />
