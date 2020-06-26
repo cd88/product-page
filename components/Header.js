@@ -101,14 +101,14 @@ class Header extends React.Component {
           </div>
           <nav>
               <ul>
-                  <li><a href="javascript:;" onClick={() => {if(!this.props.isDemoVisible) {this.revealDemoAnimationSequence()}}}>Demo</a></li>
-                  <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('purchase')}}>Purchase</a></li>
-                  <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('about')}}>About</a></li>
-                  <li><a href="javascript:;" onClick={() => {this.props.onOpenArticle('contact')}}>Contact</a></li>
+                  <li><a href="#" onClick={() => {if(!this.props.isDemoVisible) {this.revealDemoAnimationSequence()}}}>Demo</a></li>
+                  <li><a href="#" onClick={() => {this.props.onOpenArticle('purchase')}}>Purchase</a></li>
+                  <li><a href="#" onClick={() => {this.props.onOpenArticle('about')}}>About</a></li>
+                  <li><a href="#" onClick={() => {this.props.onOpenArticle('contact')}}>Contact</a></li>
               </ul>
           </nav>
           <div className={`cornerLogo ${this.props.isDemoVisible ? 'demoVisible' : ''} ${this.props.paintingIntro}`}>
-            <a href="javascript:;" onClick={() => {this.concealDemoAnimationSequence()}}>
+            <a href="#" onClick={() => {this.concealDemoAnimationSequence()}}>
               <SpinningRectangles />
               <h2 className="title">The Mulchmate</h2>
             </a>

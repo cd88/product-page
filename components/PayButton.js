@@ -6,7 +6,7 @@ import faPlus from '@fortawesome/react-fontawesome'
 import faMinus from '@fortawesome/react-fontawesome'
 import StripeCheckout from 'react-stripe-checkout'
 
-import stripeConfig from '../static/stripe-config.js'
+import stripeConfig from '../public/static/stripe-config.js'
 // console.log(stripeConfig);
 
 class PayButton extends React.Component {
