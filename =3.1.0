@@ -1,0 +1,14 @@
+
+> fibers@5.0.0 install /Users/cd/Documents/mlch/node_modules/fibers
+> node build.js || nodejs build.js
+
+  CXX(target) Release/obj.target/fibers/src/fibers.o
+  CXX(target) Release/obj.target/fibers/src/coroutine.o
+  CC(target) Release/obj.target/fibers/src/libcoro/coro.o
+  SOLINK_MODULE(target) Release/fibers.node
+Installed in `/Users/cd/Documents/mlch/node_modules/fibers/bin/darwin-x64-79/fibers.node`
++ sass@1.26.9
++ fibers@5.0.0
+added 3 packages from 4 contributors and audited 1340 packages in 23.419s
+found 0 vulnerabilities
+
